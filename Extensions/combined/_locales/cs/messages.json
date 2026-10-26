@@ -1,0 +1,962 @@
+{
+  "apiStatusLabel": {
+    "message": "Stav API:"
+  },
+  "apiStatusOffline": {
+    "message": "Offline"
+  },
+  "apiStatusOnline": {
+    "message": "Online"
+  },
+  "colorTheme": {
+    "message": "Barevný motiv:"
+  },
+  "colorizeRatio": {
+    "message": "Obarvit pruh poměru"
+  },
+  "colorizeRatioHover": {
+    "message": "Použít vlastní barvy pro pruh poměru."
+  },
+  "colorizeThumbs": {
+    "message": "Obarvit ikony"
+  },
+  "colorizeThumbsHover": {
+    "message": "Použít vlastní barvy pro ikony."
+  },
+  "considerDonating": {
+    "message": "Jediná věc, díky které rozšíření funguje, jsou vaše příspěvky. Zvažte prosím podpoření projektu."
+  },
+  "customColors": {
+    "message": "Vlastní barvy pro lištu disliků a tlačítka"
+  },
+  "customNumberFormats": {
+    "message": "Vlastní formáty čísel"
+  },
+  "disableLoggingHover": {
+    "message": "Vypnout zapisování odpovědí API do konzole."
+  },
+  "disableLoggingLabel": {
+    "message": "Zakázat protokolování do konzole"
+  },
+  "extensionDesc": {
+    "message": "Navrátí možnost zobrazení počtu disliků"
+  },
+  "extensionName": {
+    "message": "Return YouTube Dislike"
+  },
+  "extensionNameBeta": {
+    "message": "Return YouTube Dislike Beta"
+  },
+  "legendSettings": {
+    "message": "Nastavení"
+  },
+  "linkChangelog": {
+    "message": "Seznam změn"
+  },
+  "linkDiscord": {
+    "message": "Discord"
+  },
+  "linkDonate": {
+    "message": "Přispějte"
+  },
+  "linkFAQ": {
+    "message": "FAQ"
+  },
+  "linkGithub": {
+    "message": "GitHub"
+  },
+  "linkHelp": {
+    "message": "Nápověda"
+  },
+  "linkWebsite": {
+    "message": "Web"
+  },
+  "numberFormat": {
+    "message": "Formát čísel:"
+  },
+  "patreonBadgePrefix": {
+    "message": "Patreon"
+  },
+  "patreonLoggedOutMessage": {
+    "message": "Prémiové funkce jsou dostupné pro podporovatele na Patreonu"
+  },
+  "patreonLogin": {
+    "message": "Přihlásit se pomocí Patreonu"
+  },
+  "patreonPrivacyNote": {
+    "message": "Informace o členství na Patreonu slouží k ověření přístupu k prémiovým funkcím. Údaje o vaší kartě ani bankovním účtu nedostáváme."
+  },
+  "githubLoggedOutMessage": {
+    "message": "Premium features available for GitHub contributors"
+  },
+  "githubLogin": {
+    "message": "Login with GitHub (Contributor)"
+  },
+  "githubLoginStartFailed": {
+    "message": "Failed to initiate GitHub login. Please try again."
+  },
+  "githubLoginCompleteFailed": {
+    "message": "Failed to complete GitHub login. Please try again."
+  },
+  "patreonLoginCompleteFailed": {
+    "message": "Přihlášení se nepodařilo dokončit. Zkuste to znovu."
+  },
+  "patreonLoginStartFailed": {
+    "message": "Nepodařilo se zahájit přihlášení přes Patreon. Zkuste to znovu."
+  },
+  "patreonLogout": {
+    "message": "Odhlásit se"
+  },
+  "patreonPermissionRequired": {
+    "message": "Přihlášení vyžaduje oprávnění „identity“. Povolte ho, prosím."
+  },
+  "patreonTierBasic": {
+    "message": "Základní úroveň"
+  },
+  "patreonTierChecking": {
+    "message": "Kontrola členství…"
+  },
+  "patreonTierNone": {
+    "message": "Žádné aktivní členství"
+  },
+  "patreonTierPremium": {
+    "message": "Prémiový podporovatel"
+  },
+  "patreonTierSupporter": {
+    "message": "Podporovatel"
+  },
+  "patreonUserFallback": {
+    "message": "Uživatel Patreonu"
+  },
+  "reformatLikes": {
+    "message": "Přeformátovat čísla palců nahoru"
+  },
+  "reformatLikesHover": {
+    "message": "Udělat formát palců nahoru/dolů konzistentní."
+  },
+  "hidePremiumTeaser": {
+    "message": "Skrýt nezpracované počty"
+  },
+  "hidePremiumTeaserHover": {
+    "message": "Nezobrazovat panel s nezpracovanými počty na stránkách přehrávání na YouTube."
+  },
+  "hidePremiumAnalytics": {
+    "message": "Skrýt prémiové statistiky videa"
+  },
+  "hidePremiumAnalyticsHover": {
+    "message": "Skrýt panel prémiových statistik videa na stránkách přehrávání na YouTube."
+  },
+  "roundNumbers": {
+    "message": "Zobrazit čísla zaokrouhlená dolů"
+  },
+  "roundNumbersHover": {
+    "message": "Zaokrouhlit čísla dolů (výchozí chování YouTube)."
+  },
+  "shortsSupport": {
+    "message": "Podpora YouTube Shorts"
+  },
+  "showTooltipPercentage": {
+    "message": "Procenta v nápovědě u lišty like/dislike."
+  },
+  "showTooltipPercentageHover": {
+    "message": "Zobrazit procenta v nápovědě u lišty like/dislike."
+  },
+  "textColorTheme": {
+    "message": "Barevný motiv:"
+  },
+  "textColorTheme1": {
+    "message": "Klasický"
+  },
+  "textColorTheme2": {
+    "message": "Přístupný"
+  },
+  "textColorTheme3": {
+    "message": "Neon"
+  },
+  "textColorThemeHibiscus": {
+    "message": "Hibiscus"
+  },
+  "textColorThemeCustom": {
+    "message": "Vlastní"
+  },
+  "colorThemeLight": {
+    "message": "Světlý motiv YouTube"
+  },
+  "colorThemeDark": {
+    "message": "Tmavý motiv YouTube"
+  },
+  "colorThemeLike": {
+    "message": "To se mi líbí"
+  },
+  "colorThemeDislike": {
+    "message": "To se mi nelíbí"
+  },
+  "textColorizeRatioBar": {
+    "message": "Obarvit pruh poměru"
+  },
+  "textColorizeRatioBarHover": {
+    "message": "Použít vlastní barvy pro pruh poměru."
+  },
+  "textColorizeThumbs": {
+    "message": "Obarvit ikony"
+  },
+  "textColorizeThumbsHover": {
+    "message": "Použít vlastní barvy pro ikony."
+  },
+  "textConsistentFormat": {
+    "message": "Použít stejný formát čísel pro palce nahoru/dolů"
+  },
+  "textConsistentFormatHover": {
+    "message": "Přeformátovat počet palců nahoru."
+  },
+  "textDeveloper": {
+    "message": "vytvořil Dmitry Selivanov & komunita"
+  },
+  "textLikesDisabled": {
+    "message": "zakázáno majitelem"
+  },
+  "textNumberFormat": {
+    "message": "Formát čísel:"
+  },
+  "textRoundingNumbers": {
+    "message": "Zaokrouhlit dolů statistiky palců nahoru/dolů (výchozí chování YouTube)"
+  },
+  "textRoundingNumbersHover": {
+    "message": "Zobrazit statistiky zaokrouhlené dolů."
+  },
+  "textSettings": {
+    "message": "Zakázat odesílání palců nahoru/dolů"
+  },
+  "textSettingsHover": {
+    "message": "Zastaví počítání vašich palců nahoru/dolů."
+  },
+  "textTempUnavailable": {
+    "message": "dočasně nedostupné"
+  },
+  "textUpdate": {
+    "message": "aktualizovat na"
+  },
+  "tooltipPercentageMode": {
+    "message": "Režim procent:"
+  },
+  "tooltipPercentageModeHover": {
+    "message": "Použít vlastní zobrazení procent po najetí myší."
+  },
+  "version30installed": {
+    "message": "Verze __RYD_VERSION__ nainstalována"
+  },
+  "whatsnew": {
+    "message": "Co je nového"
+  },
+  "premiumAnalytics_title": {
+    "message": "Prémiové statistiky videa"
+  },
+  "premiumAnalytics_activityTitle": {
+    "message": "Zapojení v čase"
+  },
+  "premiumAnalytics_listsTitle": {
+    "message": "Nejlepší země"
+  },
+  "premiumAnalytics_listLikesTitle": {
+    "message": "Země s nejvíce lajky"
+  },
+  "premiumAnalytics_listDislikesTitle": {
+    "message": "Země s nejvíce dislajky"
+  },
+  "premiumAnalytics_mapTitle": {
+    "message": "Geografie"
+  },
+  "premiumAnalytics_expand": {
+    "message": "Rozbalit"
+  },
+  "premiumAnalytics_collapse": {
+    "message": "Sbalit"
+  },
+  "premiumAnalytics_mapMetricLabel": {
+    "message": "Metrika mapy"
+  },
+  "premiumAnalytics_mapReset": {
+    "message": "Zpět na mapu světa"
+  },
+  "premiumAnalytics_modeLikes": {
+    "message": "Lajky"
+  },
+  "premiumAnalytics_modeDislikes": {
+    "message": "Dislajky"
+  },
+  "premiumAnalytics_modeRatio": {
+    "message": "Poměr"
+  },
+  "premiumAnalytics_windowGroupLabel": {
+    "message": "Časové okno dat"
+  },
+  "premiumAnalytics_windowLatest": {
+    "message": "Poslední dny"
+  },
+  "premiumAnalytics_windowFirst": {
+    "message": "První dny"
+  },
+  "premiumAnalytics_windowLatestTitle": {
+    "message": "Zobrazit nejnovější dny v rámci vybraného okna"
+  },
+  "premiumAnalytics_windowFirstTitle": {
+    "message": "Zobrazit nejstarší dny v rámci vybraného okna"
+  },
+  "premiumAnalytics_windowSummaryCustom": {
+    "message": "Vlastní výběr"
+  },
+  "premiumAnalytics_windowSummaryAllTime": {
+    "message": "Celé období"
+  },
+  "premiumAnalytics_windowSummaryLast": {
+    "message": "Posledních $1"
+  },
+  "premiumAnalytics_windowSummaryFirst": {
+    "message": "Prvních $1"
+  },
+  "premiumAnalytics_daysSingular": {
+    "message": "$1 den"
+  },
+  "premiumAnalytics_daysPlural": {
+    "message": "$1 dní"
+  },
+  "premiumAnalytics_rangeLabelAllTime": {
+    "message": "Celé období"
+  },
+  "premiumAnalytics_rangeLabelDays": {
+    "message": "$1d"
+  },
+  "premiumAnalytics_selectedPeriod": {
+    "message": "Vybrané období: $1"
+  },
+  "premiumAnalytics_totalsHeading": {
+    "message": "Uživatelé rozšíření"
+  },
+  "premiumAnalytics_totalsLikes": {
+    "message": "$1 lajků"
+  },
+  "premiumAnalytics_totalsDislikes": {
+    "message": "$1 dislajků"
+  },
+  "premiumAnalytics_summaryMeta": {
+    "message": "Zaznamenáno $1 interakcí z $2 zemí ($3 unikátních IP)"
+  },
+  "premiumAnalytics_bucketHour": {
+    "message": "Hlasy za hodinu"
+  },
+  "premiumAnalytics_bucketDay": {
+    "message": "Hlasy za den"
+  },
+  "premiumAnalytics_bucketWeek": {
+    "message": "Hlasy za týden"
+  },
+  "premiumAnalytics_bucketHours": {
+    "message": "Hlasy každých $1 hodin"
+  },
+  "premiumAnalytics_bucketDays": {
+    "message": "Hlasy každých $1 dní"
+  },
+  "premiumAnalytics_bucketMinutes": {
+    "message": "Hlasy každých $1 minut"
+  },
+  "premiumAnalytics_bucketMinute": {
+    "message": "Hlasy za minutu"
+  },
+  "premiumAnalytics_bucketSeconds": {
+    "message": "Hlasy každých $1 sekund"
+  },
+  "premiumAnalytics_bucketSecond": {
+    "message": "Hlasy za sekundu"
+  },
+  "premiumAnalytics_noData": {
+    "message": "Zatím žádná data"
+  },
+  "premiumAnalytics_unknownRegion": {
+    "message": "Neznámé"
+  },
+  "premiumAnalytics_loading": {
+    "message": "Načítání statistik…"
+  },
+  "premiumAnalytics_errorReauth": {
+    "message": "Pro odemčení statistik znovu autorizujte Patreon."
+  },
+  "premiumAnalytics_errorInactive": {
+    "message": "Prémiové statistiky jsou dostupné aktivním podporovatelům na Patreonu."
+  },
+  "premiumAnalytics_errorSession": {
+    "message": "Relace vypršela. Přihlaste se znovu přes Patreon."
+  },
+  "premiumAnalytics_errorBackend": {
+    "message": "Služba statistik je nyní nedostupná."
+  },
+  "premiumAnalytics_errorNetwork": {
+    "message": "Nelze se připojit ke službě statistik."
+  },
+  "premiumAnalytics_errorGeneric": {
+    "message": "Nelze načíst prémiové statistiky."
+  },
+  "premiumAnalytics_mapSeriesLabel": {
+    "message": "Aktivita"
+  },
+  "premiumAnalytics_likeRatio": {
+    "message": "Poměr lajků"
+  },
+  "premiumAnalytics_visualHighRatio": {
+    "message": "Vyšší poměr lajků"
+  },
+  "premiumAnalytics_visualLowRatio": {
+    "message": "Nižší poměr lajků"
+  },
+  "premiumAnalytics_visualHighLikes": {
+    "message": "Více lajků"
+  },
+  "premiumAnalytics_visualLowLikes": {
+    "message": "Méně lajků"
+  },
+  "premiumAnalytics_visualHighDislikes": {
+    "message": "Více dislajků"
+  },
+  "premiumAnalytics_visualLowDislikes": {
+    "message": "Méně dislajků"
+  },
+  "premiumAnalytics_visualHighGeneric": {
+    "message": "Více $1"
+  },
+  "premiumAnalytics_visualLowGeneric": {
+    "message": "Méně $1"
+  },
+  "premiumAnalytics_tooltipLikes": {
+    "message": "Lajky: $1"
+  },
+  "premiumAnalytics_tooltipDislikes": {
+    "message": "Dislajky: $1"
+  },
+  "premiumAnalytics_tooltipRatio": {
+    "message": "Poměr lajků: $1"
+  },
+  "premiumTeaser_title": {
+    "message": "Analytika videí"
+  },
+  "premiumTeaser_subtitle": {
+    "message": "Nezpracované dislajky jsou přímá hlášení uživatelů rozšíření sledujících toto video."
+  },
+  "premiumTeaser_cta": {
+    "message": "Odemknout Premium"
+  },
+  "premiumTeaser_learn": {
+    "message": "Zobrazit náhled kompletních statistik"
+  },
+  "premiumTeaser_statRaw": {
+    "message": "Počet nezpracovaných dislajků"
+  },
+  "premiumTeaser_statDislikes": {
+    "message": "Odhadované dislajky"
+  },
+  "premiumTeaser_statLikes": {
+    "message": "Hrubý počet lajků"
+  },
+  "premiumTeaser_statusLoading": {
+    "message": "Získávání nejnovějších součtů dislajků…"
+  },
+  "premiumTeaser_statusError": {
+    "message": "Data dislajků se nepodařilo načíst. Zkuste stránku znovu načíst."
+  },
+  "premiumTeaser_breadcrumbsAria": {
+    "message": "Jak odemknout prémiové statistiky"
+  },
+  "premiumTeaser_breadcrumbsTitle": {
+    "message": "Odemkněte prémiové statistiky videa ve třech krocích:"
+  },
+  "premiumTeaser_breadcrumbStep1": {
+    "message": "Přihlaste se přes Patreon v okně rozšíření Return YouTube Dislike."
+  },
+  "premiumTeaser_breadcrumbStep2": {
+    "message": "Vyberte úroveň Premium pro aktivaci časových os aktivity, žebříčků zemí a interaktivní mapy."
+  },
+  "premiumTeaser_breadcrumbStep3": {
+    "message": "Znovu načtěte YouTube a uvidíte hodinové trendy, hlavní země a detailní přehled států USA pro každé video."
+  },
+  "premiumTierNotice_title": {
+    "message": "Prémiová analytika je uzamčená"
+  },
+  "premiumTierNotice_message": {
+    "message": "Vaše členství na Patreonu nezahrnuje úroveň Premium. Povýšte svůj příspěvek a zpřístupněte si pokročilou video analytiku."
+  },
+  "premiumTierNotice_cta": {
+    "message": "Povýšit na Patreonu"
+  },
+  "changelog_cta_primary": {
+    "message": "Upgradovat na Patreonu"
+  },
+  "changelog_cta_secondary": {
+    "message": "Přečíst průvodce nastavením"
+  },
+  "changelog_section_highlights": {
+    "message": "Nové funkce"
+  },
+  "changelog_feature_timeline_title": {
+    "message": "Časová osa živé aktivity"
+  },
+  "changelog_feature_map_title": {
+    "message": "Interaktivní mapa světa a USA"
+  },
+  "changelog_feature_quality_title": {
+    "message": "Žebříček nejlepších zemí"
+  },
+  "changelog_screenshot_label_timeline": {
+    "message": "Zástupný obrázek: přehled časové osy"
+  },
+  "changelog_screenshot_label_map": {
+    "message": "Zástupný obrázek: mapa globální aktivity"
+  },
+  "changelog_screenshot_label_teaser": {
+    "message": "Zástupný symbol: žebříček zemí"
+  },
+  "changelog_upgrade_step1": {
+    "message": "Otevřete popup Return YouTube Dislike a přihlaste se přes Patreon."
+  },
+  "changelog_support_heading": {
+    "message": "Potřebujete pomoct?"
+  },
+  "changelog_support_description": {
+    "message": "Jsme tu pro vás – využijte dokumentaci podpory nebo komunitu."
+  },
+  "changelog_support_contact": {
+    "message": "Zeptejte se komunity"
+  },
+  "hideClutterButtons": {
+    "message": "Hide clutter buttons"
+  },
+  "hideClutterButtonsHelpLabel": {
+    "message": "Show before and after examples"
+  },
+  "hideClutterButtonsDescription": {
+    "message": "Keep only Like and Dislike visible. Share, Save, Thanks, and other optional actions stay available in YouTube's three-dot More menu."
+  },
+  "hideClutterButtonsBefore": {
+    "message": "Before: all action buttons are visible"
+  },
+  "hideClutterButtonsAfter": {
+    "message": "After: only Like and Dislike stay visible"
+  },
+  "changelog_brand_logo_alt": {
+    "message": "Logo Return YouTube Dislike"
+  },
+  "githubLoginUnavailable": {
+    "message": "Přihlášení přispěvatelů přes GitHub je momentálně nedostupné. Služba vyžaduje aktualizaci nebo změnu konfigurace."
+  },
+  "githubLoginNotContributor": {
+    "message": "Tento účet GitHub není uveden mezi přispěvateli projektu Return YouTube Dislike. Přihlaste se účtem, který do projektu přispěl. Nedávné příspěvky se mohou projevit až za několik hodin."
+  },
+  "githubLoginBrowserUnavailable": {
+    "message": "Přihlášení přes GitHub není nastaveno pro adresu zpětného volání tohoto prohlížeče. Kontaktujte podporu."
+  },
+  "githubLoginExpired": {
+    "message": "Tento pokus o přihlášení přes GitHub vypršel nebo jej nebylo možné ověřit. Začněte nové přihlášení."
+  },
+  "githubLoginUpdateRequired": {
+    "message": "Pro přihlášení přispěvatelů přes GitHub aktualizujte rozšíření."
+  },
+  "githubLoginRateLimited": {
+    "message": "Příliš mnoho pokusů o přihlášení. Před dalším pokusem počkejte minutu."
+  },
+  "githubLoginDenied": {
+    "message": "Autorizace na GitHubu byla zamítnuta. Přihlášení přispěvatelů vyžaduje autorizaci."
+  },
+  "discussion_title": {
+    "message": "Komentáře RYD"
+  },
+  "discussion_subtitle": {
+    "message": "Komunitní diskuze provozovaná službou Return YouTube Dislike."
+  },
+  "discussion_independent": {
+    "message": "Tyto komentáře jsou oddělené od YouTube."
+  },
+  "discussion_open": {
+    "message": "Otevřít komentáře RYD"
+  },
+  "discussion_close": {
+    "message": "Zavřít"
+  },
+  "discussion_new": {
+    "message": "Nejnovější"
+  },
+  "discussion_top": {
+    "message": "Nejlepší"
+  },
+  "discussion_sort": {
+    "message": "Seřadit komentáře"
+  },
+  "discussion_refresh": {
+    "message": "Obnovit"
+  },
+  "discussion_loading": {
+    "message": "Načítání komentářů…"
+  },
+  "discussion_empty": {
+    "message": "Zatím tu nejsou žádné komentáře. Zahajte diskuzi."
+  },
+  "discussion_replyEmpty": {
+    "message": "Zatím žádné odpovědi."
+  },
+  "discussion_comment": {
+    "message": "Komentář"
+  },
+  "discussion_post": {
+    "message": "Zveřejnit komentář"
+  },
+  "discussion_reply": {
+    "message": "Odpovědět"
+  },
+  "discussion_postReply": {
+    "message": "Zveřejnit odpověď"
+  },
+  "discussion_cancel": {
+    "message": "Zrušit"
+  },
+  "discussion_save": {
+    "message": "Uložit"
+  },
+  "discussion_edit": {
+    "message": "Upravit"
+  },
+  "discussion_delete": {
+    "message": "Smazat"
+  },
+  "discussion_deleteConfirm": {
+    "message": "Smazat tento komentář?"
+  },
+  "discussion_deleted": {
+    "message": "Komentář smazán"
+  },
+  "discussion_edited": {
+    "message": "upraveno"
+  },
+  "discussion_replies": {
+    "message": "Odpovědi ($1)"
+  },
+  "discussion_more": {
+    "message": "Načíst další"
+  },
+  "discussion_like": {
+    "message": "To se mi líbí"
+  },
+  "discussion_dislike": {
+    "message": "To se mi nelíbí"
+  },
+  "discussion_reacting": {
+    "message": "Ukládání reakce…"
+  },
+  "discussion_signInRequired": {
+    "message": "Pro pokračování se přihlaste ve vyskakovacím okně rozšíření."
+  },
+  "discussion_tierRequired": {
+    "message": "Komentáře mohou zveřejňovat členové s aktivním členstvím úrovně Commenter nebo vyšší."
+  },
+  "discussion_join": {
+    "message": "Získat členství Commenter"
+  },
+  "discussion_gate": {
+    "message": "Číst a reagovat mohou všichni. Komentáře mohou zveřejňovat členové s aktivním členstvím úrovně Commenter nebo vyšší."
+  },
+  "discussion_nicknameRequired": {
+    "message": "Před zveřejněním komentáře si zvolte veřejnou přezdívku RYD."
+  },
+  "discussion_nicknameLabel": {
+    "message": "Veřejná přezdívka RYD"
+  },
+  "discussion_nicknameHint": {
+    "message": "3–32 písmen, číslic, mezer, teček, spojovníků nebo podtržítek. Toto jméno se zobrazí u vašich komentářů."
+  },
+  "discussion_nicknameSave": {
+    "message": "Uložit přezdívku"
+  },
+  "discussion_nicknameTaken": {
+    "message": "Tato přezdívka je již obsazená. Zvolte jinou."
+  },
+  "discussion_nicknameInvalid": {
+    "message": "Použijte 3–32 písmen, číslic, mezer, teček, spojovníků nebo podtržítek."
+  },
+  "discussion_nicknameChange": {
+    "message": "Změnit přezdívku"
+  },
+  "discussion_as": {
+    "message": "Komentujete jako $1"
+  },
+  "discussion_placeholder": {
+    "message": "Zapojte se do diskuze…"
+  },
+  "discussion_characters": {
+    "message": "$1 / $2"
+  },
+  "discussion_report": {
+    "message": "Nahlásit"
+  },
+  "discussion_reportTitle": {
+    "message": "Nahlásit komentář"
+  },
+  "discussion_reportReason": {
+    "message": "Důvod"
+  },
+  "discussion_reportSpam": {
+    "message": "Spam"
+  },
+  "discussion_reportAbuse": {
+    "message": "Obtěžování nebo nenávist"
+  },
+  "discussion_reportOther": {
+    "message": "Jiné"
+  },
+  "discussion_reportDetails": {
+    "message": "Další podrobnosti (nepovinné)"
+  },
+  "discussion_reportSend": {
+    "message": "Odeslat hlášení"
+  },
+  "discussion_reportDone": {
+    "message": "Hlášení přijato. Děkujeme."
+  },
+  "discussion_moderation": {
+    "message": "Moderování"
+  },
+  "discussion_queueEmpty": {
+    "message": "Žádná hlášení ke kontrole."
+  },
+  "discussion_hide": {
+    "message": "Skrýt komentář"
+  },
+  "discussion_restore": {
+    "message": "Obnovit komentář"
+  },
+  "discussion_dismiss": {
+    "message": "Zamítnout hlášení"
+  },
+  "discussion_ban": {
+    "message": "Zablokovat autora"
+  },
+  "discussion_unban": {
+    "message": "Odblokovat autora"
+  },
+  "discussion_moderationReason": {
+    "message": "Důvod moderování"
+  },
+  "discussion_moderationSaved": {
+    "message": "Akce moderátora byla uložena."
+  },
+  "discussion_reported": {
+    "message": "Počet hlášení: $1"
+  },
+  "discussion_unavailable": {
+    "message": "Komentáře RYD nejsou pro toto video dostupné."
+  },
+  "discussion_commentUnavailable": {
+    "message": "Tento komentář již není dostupný."
+  },
+  "discussion_error": {
+    "message": "Nelze se připojit. Zkuste to znovu."
+  },
+  "discussion_rateLimited": {
+    "message": "Před dalším pokusem chvíli počkejte."
+  },
+  "discussion_conflict": {
+    "message": "Tento komentář se změnil. Obnovte zobrazení a zkuste to znovu."
+  },
+  "discussion_forbidden": {
+    "message": "Tato akce není pro váš účet dostupná."
+  },
+  "discussion_retry": {
+    "message": "Zkusit znovu"
+  },
+  "discussion_notifications": {
+    "message": "Oznámení"
+  },
+  "discussion_notificationEmpty": {
+    "message": "Máte přečtená všechna oznámení."
+  },
+  "discussion_notificationReply": {
+    "message": "$1 odpovídá na váš komentář"
+  },
+  "discussion_notificationLike": {
+    "message": "Někomu se líbil váš komentář"
+  },
+  "discussion_notificationLikes": {
+    "message": "Váš komentář získal tento počet označení To se mi líbí: $1"
+  },
+  "discussion_notificationDislike": {
+    "message": "Někomu se nelíbil váš komentář"
+  },
+  "discussion_notificationReaction": {
+    "message": "Někdo reagoval na váš komentář"
+  },
+  "discussion_someone": {
+    "message": "Někdo"
+  },
+  "discussion_markRead": {
+    "message": "Označit jako přečtené"
+  },
+  "discussion_markAllRead": {
+    "message": "Označit vše jako přečtené"
+  },
+  "discussion_view": {
+    "message": "Zobrazit diskuzi"
+  },
+  "discussion_unread": {
+    "message": "Nepřečtená oznámení: $1"
+  },
+  "discussion_signedOutInbox": {
+    "message": "Přihlaste se a zobrazte odpovědi a reakce na své komentáře."
+  },
+  "discussion_notificationUnavailable": {
+    "message": "Tato diskuze již není dostupná."
+  },
+  "discussion_discussionTab": {
+    "message": "Diskuze"
+  },
+  "discussion_nickname": {
+    "message": "Přezdívka"
+  },
+  "discussion_reportCount": {
+    "message": "Hlášení"
+  },
+  "discussion_reportStatus": {
+    "message": "Stav hlášení"
+  },
+  "discussion_openReports": {
+    "message": "Otevřená hlášení"
+  },
+  "discussion_resolvedReports": {
+    "message": "Zamítnutá hlášení"
+  },
+  "discussion_author": {
+    "message": "Autor"
+  },
+  "discussion_me": {
+    "message": "Vy"
+  },
+  "discussion_saving": {
+    "message": "Ukládání…"
+  },
+  "discussion_confirm": {
+    "message": "Potvrdit"
+  },
+  "discussion_notificationUpdated": {
+    "message": "Nová aktivita u vašich komentářů"
+  },
+  "discussion_showThread": {
+    "message": "Zobrazit vlákno"
+  },
+  "discussion_loadReplies": {
+    "message": "Zobrazit odpovědi ($1)"
+  },
+  "patreonTierCommenter": {
+    "message": "Commenter"
+  },
+  "changelog_page_title": {
+    "message": "Vítejte v Return YouTube Dislike"
+  },
+  "changelog_hero_eyebrow": {
+    "message": "Vše je připraveno"
+  },
+  "changelog_hero_title": {
+    "message": "Hodnocení Nelíbí se jsou zpět."
+  },
+  "changelog_hero_body": {
+    "message": "Otevřete libovolné video na YouTube a počet hodnocení Nelíbí se uvidíte hned vedle Líbí se, kam patří. Verze 4.1 přináší také komentáře RYD, prostor pro diskusi o videích mimo komentáře YouTube."
+  },
+  "changelog_new_badge": {
+    "message": "Nové ve verzi 4.1"
+  },
+  "changelog_premium_badge": {
+    "message": "Premium"
+  },
+  "changelog_comments_title": {
+    "message": "Seznamte se s komentáři RYD"
+  },
+  "changelog_comments_body": {
+    "message": "Komunitní diskuse pod videi a Shorts, kterou provozuje Return YouTube Dislike odděleně od komentářů YouTube. Číst a reagovat může každý. Členové úrovní Commenter a Premium mohou psát komentáře a odpovídat."
+  },
+  "changelog_comments_point_replies": {
+    "message": "Odpovědi ve vláknech s hodnocením Líbí se a Nelíbí se"
+  },
+  "changelog_comments_point_nickname": {
+    "message": "Pište pod veřejnou přezdívkou, kterou si zvolíte"
+  },
+  "changelog_comments_point_notifications": {
+    "message": "Oznámení, když někdo odpoví nebo zareaguje"
+  },
+  "changelog_comments_point_moderation": {
+    "message": "Nahlašování a moderování pro slušnou diskusi"
+  },
+  "changelog_comments_shot_alt": {
+    "message": "Panel komentářů RYD s diskusním vláknem pod videem"
+  },
+  "changelog_notifications_shot_alt": {
+    "message": "Oznámení RYD s odpověďmi a hodnoceními Líbí se u vašich komentářů"
+  },
+  "changelog_sample_note": {
+    "message": "Snímky obrazovky obsahují ukázková data."
+  },
+  "changelog_analytics_title": {
+    "message": "Analýzy Premium"
+  },
+  "changelog_analytics_body": {
+    "message": "Podívejte se, jak je video přijímáno v průběhu času a po celém světě. Vyberte 7, 30 nebo 90 dní či celé období a porovnejte hodnocení Líbí se, Nelíbí se a jejich poměr."
+  },
+  "changelog_analytics_timeline_title": {
+    "message": "Časová osa aktivity"
+  },
+  "changelog_analytics_timeline_body": {
+    "message": "Hodnocení Líbí se a Nelíbí se v čase, až po jednotlivé hodiny."
+  },
+  "changelog_analytics_countries_title": {
+    "message": "Žebříček zemí"
+  },
+  "changelog_analytics_countries_body": {
+    "message": "Zjistěte, ve kterých zemích dostává video nejvíce hodnocení Líbí se a Nelíbí se."
+  },
+  "changelog_analytics_world_title": {
+    "message": "Mapa světa"
+  },
+  "changelog_analytics_world_body": {
+    "message": "Porovnejte aktivitu v jednotlivých zemích."
+  },
+  "changelog_analytics_us_title": {
+    "message": "Státy USA"
+  },
+  "changelog_analytics_us_body": {
+    "message": "Prohlédněte si aktivitu podle jednotlivých států."
+  },
+  "changelog_join_title": {
+    "message": "Získejte funkce Premium"
+  },
+  "changelog_join_free": {
+    "message": "Počty hodnocení Nelíbí se jsou zdarma pro všechny. Členství je dobrovolné a pomáhá podporovat projekt."
+  },
+  "changelog_join_step1": {
+    "message": "Přidejte se na Patreonu. Úroveň Commenter umožňuje psát komentáře; Premium přidává i analýzy."
+  },
+  "changelog_join_step3": {
+    "message": "Znovu načtěte libovolné video na YouTube. Nové funkce se objeví automaticky."
+  },
+  "changelog_also_title": {
+    "message": "Také v tomto vydání"
+  },
+  "changelog_also_counts": {
+    "message": "Počty hodnocení Líbí se a Nelíbí se se zobrazují spolehlivěji v rozšíření i uživatelském skriptu."
+  },
+  "changelog_also_consent": {
+    "message": "Vylepšený postup udělení souhlasu s použitím dat ve Firefoxu."
+  },
+  "changelog_also_translations": {
+    "message": "Nové a vylepšené překlady."
+  },
+  "reviewPromptTitle": {
+    "message": "Líbí se vám RYD?"
+  },
+  "reviewPromptBody": {
+    "message": "Google změnil pravidla hodnocení v Chrome Web Store. Přes 16 000+ pětihvězdičkových recenzí srazilo několik nedávných negativních recenzí hodnocení RYD ze 4,6 na 2,5.\n\nPokud vám RYD pomáhá, napište prosím upřímnou recenzi."
+  },
+  "reviewPromptAction": {
+    "message": "Napsat recenzi"
+  }
+}

@@ -1,0 +1,962 @@
+{
+  "apiStatusLabel": {
+    "message": "API‑status:"
+  },
+  "apiStatusOffline": {
+    "message": "Offline"
+  },
+  "apiStatusOnline": {
+    "message": "Online"
+  },
+  "colorTheme": {
+    "message": "Kleurenthema:"
+  },
+  "colorizeRatio": {
+    "message": "Verhoudingsbalk inkleuren"
+  },
+  "colorizeRatioHover": {
+    "message": "Gebruik aangepaste kleuren voor de verhoudingsbalk."
+  },
+  "colorizeThumbs": {
+    "message": "Duimpjes inkleuren"
+  },
+  "colorizeThumbsHover": {
+    "message": "Gebruik aangepaste kleuren voor de duimpictogrammen."
+  },
+  "considerDonating": {
+    "message": "Het enige dat de extensie draaiende houdt, zijn uw donaties. Overweeg alstublieft om het project te steunen."
+  },
+  "customColors": {
+    "message": "Aangepaste kleuren voor afkeerbalk en knoppen"
+  },
+  "customNumberFormats": {
+    "message": "Aangepaste getalnotaties"
+  },
+  "disableLoggingHover": {
+    "message": "Schakelt het loggen van API‑antwoorden in de console uit."
+  },
+  "disableLoggingLabel": {
+    "message": "Loggen naar de console uitschakelen"
+  },
+  "extensionDesc": {
+    "message": "Herstelt de functie om dislikes te kunnen zien"
+  },
+  "extensionName": {
+    "message": "Return YouTube Dislike"
+  },
+  "extensionNameBeta": {
+    "message": "Return YouTube Dislike Beta"
+  },
+  "legendSettings": {
+    "message": "Instellingen"
+  },
+  "linkChangelog": {
+    "message": "Wijzigingslog"
+  },
+  "linkDiscord": {
+    "message": "Discord"
+  },
+  "linkDonate": {
+    "message": "Doneer"
+  },
+  "linkFAQ": {
+    "message": "FAQ"
+  },
+  "linkGithub": {
+    "message": "GitHub"
+  },
+  "linkHelp": {
+    "message": "Help"
+  },
+  "linkWebsite": {
+    "message": "Website"
+  },
+  "numberFormat": {
+    "message": "Getalnotatie:"
+  },
+  "patreonBadgePrefix": {
+    "message": "Patreon"
+  },
+  "patreonLoggedOutMessage": {
+    "message": "Premiumfuncties zijn beschikbaar voor supporters op Patreon"
+  },
+  "patreonLogin": {
+    "message": "Inloggen met Patreon"
+  },
+  "patreonPrivacyNote": {
+    "message": "Informatie over je Patreon-lidmaatschap wordt gebruikt om je premiumtoegang te verifiëren. We ontvangen geen kaart- of bankgegevens van je."
+  },
+  "githubLoggedOutMessage": {
+    "message": "Premium features available for GitHub contributors"
+  },
+  "githubLogin": {
+    "message": "Login with GitHub (Contributor)"
+  },
+  "githubLoginStartFailed": {
+    "message": "Failed to initiate GitHub login. Please try again."
+  },
+  "githubLoginCompleteFailed": {
+    "message": "Failed to complete GitHub login. Please try again."
+  },
+  "patreonLoginCompleteFailed": {
+    "message": "Aanmelden kon niet worden voltooid. Probeer het opnieuw."
+  },
+  "patreonLoginStartFailed": {
+    "message": "Patreon‑aanmelding kon niet worden gestart. Probeer het opnieuw."
+  },
+  "patreonLogout": {
+    "message": "Afmelden"
+  },
+  "patreonPermissionRequired": {
+    "message": "Voor inloggen is de machtiging 'identity' vereist. Sta dit toe om door te gaan."
+  },
+  "patreonTierBasic": {
+    "message": "Basisniveau"
+  },
+  "patreonTierChecking": {
+    "message": "Lidmaatschap controleren…"
+  },
+  "patreonTierNone": {
+    "message": "Geen actief lidmaatschap"
+  },
+  "patreonTierPremium": {
+    "message": "Premium‑supporter"
+  },
+  "patreonTierSupporter": {
+    "message": "Supporter"
+  },
+  "patreonUserFallback": {
+    "message": "Patreon‑gebruiker"
+  },
+  "reformatLikes": {
+    "message": "Opnieuw formatteren zoals getallen"
+  },
+  "reformatLikesHover": {
+    "message": "Maak het formaat voor leuk en niet leuk consistent."
+  },
+  "hidePremiumTeaser": {
+    "message": "Ruwe aantallen verbergen"
+  },
+  "hidePremiumTeaserHover": {
+    "message": "Toon het paneel met ruwe aantallen niet op YouTube-kijkpagina’s."
+  },
+  "hidePremiumAnalytics": {
+    "message": "Premium video-inzichten verbergen"
+  },
+  "hidePremiumAnalyticsHover": {
+    "message": "Verberg het paneel met Premium video-inzichten op YouTube-kijkpagina’s."
+  },
+  "roundNumbers": {
+    "message": "Afgeronde getallen weergeven"
+  },
+  "roundNumbersHover": {
+    "message": "Rond getallen naar beneden af (standaard YouTube-gedrag)."
+  },
+  "shortsSupport": {
+    "message": "Ondersteuning voor YouTube Shorts"
+  },
+  "showTooltipPercentage": {
+    "message": "Percentage in de tooltip van de like/dislike‑balk."
+  },
+  "showTooltipPercentageHover": {
+    "message": "Percentage in de tooltip van de like/dislike‑balk weergeven."
+  },
+  "textColorTheme": {
+    "message": "Kleurenthema:"
+  },
+  "textColorTheme1": {
+    "message": "Klassiek"
+  },
+  "textColorTheme2": {
+    "message": "Beschikbaar"
+  },
+  "textColorTheme3": {
+    "message": "Neon"
+  },
+  "textColorThemeHibiscus": {
+    "message": "Hibiscus"
+  },
+  "textColorThemeCustom": {
+    "message": "Aangepast"
+  },
+  "colorThemeLight": {
+    "message": "Licht YouTube-thema"
+  },
+  "colorThemeDark": {
+    "message": "Donker YouTube-thema"
+  },
+  "colorThemeLike": {
+    "message": "Vind ik leuk"
+  },
+  "colorThemeDislike": {
+    "message": "Vind ik niet leuk"
+  },
+  "textColorizeRatioBar": {
+    "message": "Verhoudingsbalk inkleuren"
+  },
+  "textColorizeRatioBarHover": {
+    "message": "Gebruik aangepaste kleuren voor de verhoudingsbalk."
+  },
+  "textColorizeThumbs": {
+    "message": "Duimpjes inkleuren"
+  },
+  "textColorizeThumbsHover": {
+    "message": "Gebruik aangepaste kleuren voor duimpictogrammen."
+  },
+  "textConsistentFormat": {
+    "message": "Maak het formaat voor likes en dislikes consistent"
+  },
+  "textConsistentFormatHover": {
+    "message": "Herformatteer als getallen."
+  },
+  "textDeveloper": {
+    "message": "door Dmitry Selivanov & Gemeenschap"
+  },
+  "textLikesDisabled": {
+    "message": "Uitgeschakeld door eigenaar"
+  },
+  "textNumberFormat": {
+    "message": "Getalnotatie:"
+  },
+  "textRoundingNumbers": {
+    "message": "Statistieken voor leuk/niet leuk naar beneden afronden (standaard YouTube-gedrag)"
+  },
+  "textRoundingNumbersHover": {
+    "message": "Afgeronde statistieken weergeven."
+  },
+  "textSettings": {
+    "message": "Inzending voor leuk/niet leuk uitschakelen"
+  },
+  "textSettingsHover": {
+    "message": "Stopt met het tellen van je leuks en niet leuks"
+  },
+  "textTempUnavailable": {
+    "message": "Tijdelijk niet beschikbaar"
+  },
+  "textUpdate": {
+    "message": "Actualiseer naar"
+  },
+  "tooltipPercentageMode": {
+    "message": "Percentage‑modus:"
+  },
+  "tooltipPercentageModeHover": {
+    "message": "Aangepaste procentweergave bij hover gebruiken."
+  },
+  "version30installed": {
+    "message": "Versie 3.0.0.13 geïnstalleerd"
+  },
+  "whatsnew": {
+    "message": "Wat is er nieuw"
+  },
+  "premiumAnalytics_title": {
+    "message": "Premium video-inzichten"
+  },
+  "premiumAnalytics_activityTitle": {
+    "message": "Betrokkenheid in de tijd"
+  },
+  "premiumAnalytics_listsTitle": {
+    "message": "Toplanden"
+  },
+  "premiumAnalytics_listLikesTitle": {
+    "message": "Landen met de meeste likes"
+  },
+  "premiumAnalytics_listDislikesTitle": {
+    "message": "Landen met de meeste dislikes"
+  },
+  "premiumAnalytics_mapTitle": {
+    "message": "Geografie"
+  },
+  "premiumAnalytics_expand": {
+    "message": "Uitklappen"
+  },
+  "premiumAnalytics_collapse": {
+    "message": "Inklappen"
+  },
+  "premiumAnalytics_mapMetricLabel": {
+    "message": "Kaartmetriek"
+  },
+  "premiumAnalytics_mapReset": {
+    "message": "Terug naar wereldkaart"
+  },
+  "premiumAnalytics_modeLikes": {
+    "message": "Likes"
+  },
+  "premiumAnalytics_modeDislikes": {
+    "message": "Dislikes"
+  },
+  "premiumAnalytics_modeRatio": {
+    "message": "Verhouding"
+  },
+  "premiumAnalytics_windowGroupLabel": {
+    "message": "Gegevensvenster"
+  },
+  "premiumAnalytics_windowLatest": {
+    "message": "Laatste dagen"
+  },
+  "premiumAnalytics_windowFirst": {
+    "message": "Eerste dagen"
+  },
+  "premiumAnalytics_windowLatestTitle": {
+    "message": "Toon de meest recente dagen binnen het geselecteerde venster"
+  },
+  "premiumAnalytics_windowFirstTitle": {
+    "message": "Toon de eerste dagen binnen het geselecteerde venster"
+  },
+  "premiumAnalytics_windowSummaryCustom": {
+    "message": "Aangepaste selectie"
+  },
+  "premiumAnalytics_windowSummaryAllTime": {
+    "message": "Gehele periode"
+  },
+  "premiumAnalytics_windowSummaryLast": {
+    "message": "Laatste $1"
+  },
+  "premiumAnalytics_windowSummaryFirst": {
+    "message": "Eerste $1"
+  },
+  "premiumAnalytics_daysSingular": {
+    "message": "$1 dag"
+  },
+  "premiumAnalytics_daysPlural": {
+    "message": "$1 dagen"
+  },
+  "premiumAnalytics_rangeLabelAllTime": {
+    "message": "Gehele periode"
+  },
+  "premiumAnalytics_rangeLabelDays": {
+    "message": "$1d"
+  },
+  "premiumAnalytics_selectedPeriod": {
+    "message": "Geselecteerde periode: $1"
+  },
+  "premiumAnalytics_totalsHeading": {
+    "message": "Extensiegebruikers"
+  },
+  "premiumAnalytics_totalsLikes": {
+    "message": "$1 likes"
+  },
+  "premiumAnalytics_totalsDislikes": {
+    "message": "$1 dislikes"
+  },
+  "premiumAnalytics_summaryMeta": {
+    "message": "$1 interacties vastgelegd uit $2 landen ($3 unieke IP's)"
+  },
+  "premiumAnalytics_bucketHour": {
+    "message": "Stemmen per uur"
+  },
+  "premiumAnalytics_bucketDay": {
+    "message": "Stemmen per dag"
+  },
+  "premiumAnalytics_bucketWeek": {
+    "message": "Stemmen per week"
+  },
+  "premiumAnalytics_bucketHours": {
+    "message": "Stemmen elke $1 uur"
+  },
+  "premiumAnalytics_bucketDays": {
+    "message": "Stemmen elke $1 dagen"
+  },
+  "premiumAnalytics_bucketMinutes": {
+    "message": "Stemmen elke $1 minuten"
+  },
+  "premiumAnalytics_bucketMinute": {
+    "message": "Stemmen per minuut"
+  },
+  "premiumAnalytics_bucketSeconds": {
+    "message": "Stemmen elke $1 seconden"
+  },
+  "premiumAnalytics_bucketSecond": {
+    "message": "Stemmen per seconde"
+  },
+  "premiumAnalytics_noData": {
+    "message": "Nog geen gegevens"
+  },
+  "premiumAnalytics_unknownRegion": {
+    "message": "Onbekend"
+  },
+  "premiumAnalytics_loading": {
+    "message": "Inzichten laden…"
+  },
+  "premiumAnalytics_errorReauth": {
+    "message": "Autoriseer Patreon opnieuw om de analyses te ontgrendelen."
+  },
+  "premiumAnalytics_errorInactive": {
+    "message": "Premium-analyses zijn beschikbaar voor actieve Patreon-supporters."
+  },
+  "premiumAnalytics_errorSession": {
+    "message": "Sessie verlopen. Meld je opnieuw aan met Patreon."
+  },
+  "premiumAnalytics_errorBackend": {
+    "message": "De analysedienst is nu niet beschikbaar."
+  },
+  "premiumAnalytics_errorNetwork": {
+    "message": "Kan geen verbinding maken met de analysedienst."
+  },
+  "premiumAnalytics_errorGeneric": {
+    "message": "Premium-analyses kunnen niet worden geladen."
+  },
+  "premiumAnalytics_mapSeriesLabel": {
+    "message": "Activiteit"
+  },
+  "premiumAnalytics_likeRatio": {
+    "message": "Like-verhouding"
+  },
+  "premiumAnalytics_visualHighRatio": {
+    "message": "Hogere like-verhouding"
+  },
+  "premiumAnalytics_visualLowRatio": {
+    "message": "Lagere like-verhouding"
+  },
+  "premiumAnalytics_visualHighLikes": {
+    "message": "Meer likes"
+  },
+  "premiumAnalytics_visualLowLikes": {
+    "message": "Minder likes"
+  },
+  "premiumAnalytics_visualHighDislikes": {
+    "message": "Meer dislikes"
+  },
+  "premiumAnalytics_visualLowDislikes": {
+    "message": "Minder dislikes"
+  },
+  "premiumAnalytics_visualHighGeneric": {
+    "message": "Meer $1"
+  },
+  "premiumAnalytics_visualLowGeneric": {
+    "message": "Minder $1"
+  },
+  "premiumAnalytics_tooltipLikes": {
+    "message": "Likes: $1"
+  },
+  "premiumAnalytics_tooltipDislikes": {
+    "message": "Dislikes: $1"
+  },
+  "premiumAnalytics_tooltipRatio": {
+    "message": "Like-verhouding: $1"
+  },
+  "premiumTeaser_title": {
+    "message": "Videoanalyse"
+  },
+  "premiumTeaser_subtitle": {
+    "message": "Ruwe dislikes zijn directe meldingen van extensiegebruikers die deze video bekijken."
+  },
+  "premiumTeaser_cta": {
+    "message": "Premium ontgrendelen"
+  },
+  "premiumTeaser_learn": {
+    "message": "Volledige analyses bekijken"
+  },
+  "premiumTeaser_statRaw": {
+    "message": "Aantal ruwe dislikes"
+  },
+  "premiumTeaser_statDislikes": {
+    "message": "Geschatte dislikes"
+  },
+  "premiumTeaser_statLikes": {
+    "message": "Ruwe telling van vind-ik-leuks"
+  },
+  "premiumTeaser_statusLoading": {
+    "message": "Nieuwste totalen van dislikes ophalen…"
+  },
+  "premiumTeaser_statusError": {
+    "message": "De dislikegegevens konden nu niet worden geladen. Probeer de pagina te vernieuwen."
+  },
+  "premiumTeaser_breadcrumbsAria": {
+    "message": "Premium-analyses ontgrendelen"
+  },
+  "premiumTeaser_breadcrumbsTitle": {
+    "message": "Ontgrendel Premium-video-inzichten in drie snelle stappen:"
+  },
+  "premiumTeaser_breadcrumbStep1": {
+    "message": "Meld je aan met Patreon vanuit het pop-upvenster van de Return YouTube Dislike-extensie."
+  },
+  "premiumTeaser_breadcrumbStep2": {
+    "message": "Selecteer het Premium-abonnement om activiteitstijdlijnen, ranglijsten per land en de interactieve kaart te activeren."
+  },
+  "premiumTeaser_breadcrumbStep3": {
+    "message": "Laad YouTube opnieuw om uurlijkse trends, toplanden en uitsplitsingen per Amerikaanse staat te bekijken voor elke video."
+  },
+  "premiumTierNotice_title": {
+    "message": "Premium-analyse vergrendeld"
+  },
+  "premiumTierNotice_message": {
+    "message": "Je Patreon-lidmaatschap bevat geen Premium-niveau. Upgrade je bijdrage om uitgebreide video-analyses te ontgrendelen."
+  },
+  "premiumTierNotice_cta": {
+    "message": "Upgraden op Patreon"
+  },
+  "changelog_cta_primary": {
+    "message": "Upgraden op Patreon"
+  },
+  "changelog_cta_secondary": {
+    "message": "Lees de installatiehandleiding"
+  },
+  "changelog_section_highlights": {
+    "message": "Wat is er nieuw"
+  },
+  "changelog_feature_timeline_title": {
+    "message": "Tijdlijn voor live activiteiten"
+  },
+  "changelog_feature_map_title": {
+    "message": "Interactieve wereld- en Amerikaanse heatmap"
+  },
+  "changelog_feature_quality_title": {
+    "message": "Leiderbord van toplanden"
+  },
+  "changelog_screenshot_label_timeline": {
+    "message": "Placeholder: tijdlijnoverzicht"
+  },
+  "changelog_screenshot_label_map": {
+    "message": "Tijdelijke aanduiding: mondiale activiteitenkaart"
+  },
+  "changelog_screenshot_label_teaser": {
+    "message": "Tijdelijke aanduiding: landenklassement"
+  },
+  "changelog_upgrade_step1": {
+    "message": "Open de pop-up Return YouTube Dislike en log in met Patreon."
+  },
+  "changelog_support_heading": {
+    "message": "Handje nodig?"
+  },
+  "changelog_support_description": {
+    "message": "We zijn er als u een probleem tegenkomt: stel uw vragen aan de ondersteuningsdocumenten of community."
+  },
+  "changelog_support_contact": {
+    "message": "Vraag het aan de gemeenschap"
+  },
+  "hideClutterButtons": {
+    "message": "Hide clutter buttons"
+  },
+  "hideClutterButtonsHelpLabel": {
+    "message": "Show before and after examples"
+  },
+  "hideClutterButtonsDescription": {
+    "message": "Keep only Like and Dislike visible. Share, Save, Thanks, and other optional actions stay available in YouTube's three-dot More menu."
+  },
+  "hideClutterButtonsBefore": {
+    "message": "Before: all action buttons are visible"
+  },
+  "hideClutterButtonsAfter": {
+    "message": "After: only Like and Dislike stay visible"
+  },
+  "changelog_brand_logo_alt": {
+    "message": "Return YouTube Dislike-logo"
+  },
+  "githubLoginUnavailable": {
+    "message": "Inloggen via GitHub voor bijdragers is momenteel niet beschikbaar. De dienst heeft een update of een configuratiewijziging nodig."
+  },
+  "githubLoginNotContributor": {
+    "message": "Dit GitHub-account staat niet vermeld als bijdrager aan Return YouTube Dislike. Log in met een account dat aan het project heeft bijgedragen. Het kan enkele uren duren voordat recente bijdragen worden weergegeven."
+  },
+  "githubLoginBrowserUnavailable": {
+    "message": "Inloggen via GitHub is niet geconfigureerd voor het terugkeeradres van deze browser. Neem contact op met de ondersteuning."
+  },
+  "githubLoginExpired": {
+    "message": "Deze inlogpoging via GitHub is verlopen of kon niet worden geverifieerd. Start een nieuwe inlogpoging."
+  },
+  "githubLoginUpdateRequired": {
+    "message": "Werk de extensie bij om via GitHub als bijdrager in te loggen."
+  },
+  "githubLoginRateLimited": {
+    "message": "Te veel inlogpogingen. Wacht een minuut voordat je het opnieuw probeert."
+  },
+  "githubLoginDenied": {
+    "message": "De GitHub-autorisatie is geweigerd. Autorisatie is vereist om als bijdrager in te loggen."
+  },
+  "discussion_title": {
+    "message": "RYD-reacties"
+  },
+  "discussion_subtitle": {
+    "message": "Een discussie voor de community, gehost door Return YouTube Dislike."
+  },
+  "discussion_independent": {
+    "message": "Deze reacties staan los van YouTube."
+  },
+  "discussion_open": {
+    "message": "RYD-reacties openen"
+  },
+  "discussion_close": {
+    "message": "Sluiten"
+  },
+  "discussion_new": {
+    "message": "Nieuwste"
+  },
+  "discussion_top": {
+    "message": "Beste"
+  },
+  "discussion_sort": {
+    "message": "Reacties sorteren"
+  },
+  "discussion_refresh": {
+    "message": "Vernieuwen"
+  },
+  "discussion_loading": {
+    "message": "Reacties laden…"
+  },
+  "discussion_empty": {
+    "message": "Nog geen reacties. Begin het gesprek."
+  },
+  "discussion_replyEmpty": {
+    "message": "Nog geen antwoorden."
+  },
+  "discussion_comment": {
+    "message": "Reactie"
+  },
+  "discussion_post": {
+    "message": "Reactie plaatsen"
+  },
+  "discussion_reply": {
+    "message": "Beantwoorden"
+  },
+  "discussion_postReply": {
+    "message": "Antwoord plaatsen"
+  },
+  "discussion_cancel": {
+    "message": "Annuleren"
+  },
+  "discussion_save": {
+    "message": "Opslaan"
+  },
+  "discussion_edit": {
+    "message": "Bewerken"
+  },
+  "discussion_delete": {
+    "message": "Verwijderen"
+  },
+  "discussion_deleteConfirm": {
+    "message": "Deze reactie verwijderen?"
+  },
+  "discussion_deleted": {
+    "message": "Reactie verwijderd"
+  },
+  "discussion_edited": {
+    "message": "bewerkt"
+  },
+  "discussion_replies": {
+    "message": "Antwoorden ($1)"
+  },
+  "discussion_more": {
+    "message": "Meer laden"
+  },
+  "discussion_like": {
+    "message": "Vind ik leuk"
+  },
+  "discussion_dislike": {
+    "message": "Vind ik niet leuk"
+  },
+  "discussion_reacting": {
+    "message": "Waardering opslaan…"
+  },
+  "discussion_signInRequired": {
+    "message": "Log in via het pop-upvenster van de extensie om verder te gaan."
+  },
+  "discussion_tierRequired": {
+    "message": "Actieve leden op het niveau Commenter en hoger kunnen reacties plaatsen."
+  },
+  "discussion_join": {
+    "message": "Word lid op het niveau Commenter"
+  },
+  "discussion_gate": {
+    "message": "Iedereen kan lezen en waarderingen geven. Actieve leden op het niveau Commenter en hoger kunnen reacties plaatsen."
+  },
+  "discussion_nicknameRequired": {
+    "message": "Kies je openbare RYD-bijnaam voordat je een reactie plaatst."
+  },
+  "discussion_nicknameLabel": {
+    "message": "Openbare RYD-bijnaam"
+  },
+  "discussion_nicknameHint": {
+    "message": "3–32 letters, cijfers, spaties, punten, streepjes of onderstrepingstekens. Deze naam verschijnt bij je reacties."
+  },
+  "discussion_nicknameSave": {
+    "message": "Bijnaam opslaan"
+  },
+  "discussion_nicknameTaken": {
+    "message": "Deze bijnaam is al in gebruik. Kies een andere."
+  },
+  "discussion_nicknameInvalid": {
+    "message": "Gebruik 3–32 letters, cijfers, spaties, punten, streepjes of onderstrepingstekens."
+  },
+  "discussion_nicknameChange": {
+    "message": "Bijnaam wijzigen"
+  },
+  "discussion_as": {
+    "message": "Je reageert als $1"
+  },
+  "discussion_placeholder": {
+    "message": "Neem deel aan de discussie…"
+  },
+  "discussion_characters": {
+    "message": "$1 / $2"
+  },
+  "discussion_report": {
+    "message": "Melden"
+  },
+  "discussion_reportTitle": {
+    "message": "Reactie melden"
+  },
+  "discussion_reportReason": {
+    "message": "Reden"
+  },
+  "discussion_reportSpam": {
+    "message": "Spam"
+  },
+  "discussion_reportAbuse": {
+    "message": "Intimidatie of haat"
+  },
+  "discussion_reportOther": {
+    "message": "Overig"
+  },
+  "discussion_reportDetails": {
+    "message": "Aanvullende informatie (optioneel)"
+  },
+  "discussion_reportSend": {
+    "message": "Melding verzenden"
+  },
+  "discussion_reportDone": {
+    "message": "Melding ontvangen. Bedankt."
+  },
+  "discussion_moderation": {
+    "message": "Moderatie"
+  },
+  "discussion_queueEmpty": {
+    "message": "Geen meldingen om te beoordelen."
+  },
+  "discussion_hide": {
+    "message": "Reactie verbergen"
+  },
+  "discussion_restore": {
+    "message": "Reactie herstellen"
+  },
+  "discussion_dismiss": {
+    "message": "Meldingen afwijzen"
+  },
+  "discussion_ban": {
+    "message": "Auteur verbannen"
+  },
+  "discussion_unban": {
+    "message": "Verbanning van auteur opheffen"
+  },
+  "discussion_moderationReason": {
+    "message": "Reden voor moderatie"
+  },
+  "discussion_moderationSaved": {
+    "message": "Moderatieactie opgeslagen."
+  },
+  "discussion_reported": {
+    "message": "$1 meldingen"
+  },
+  "discussion_unavailable": {
+    "message": "RYD-reacties zijn niet beschikbaar voor deze video."
+  },
+  "discussion_commentUnavailable": {
+    "message": "Deze reactie is niet meer beschikbaar."
+  },
+  "discussion_error": {
+    "message": "Kan geen verbinding maken. Probeer het opnieuw."
+  },
+  "discussion_rateLimited": {
+    "message": "Wacht even voordat je het opnieuw probeert."
+  },
+  "discussion_conflict": {
+    "message": "Deze reactie is gewijzigd. Vernieuw en probeer het opnieuw."
+  },
+  "discussion_forbidden": {
+    "message": "Deze actie is niet beschikbaar voor je account."
+  },
+  "discussion_retry": {
+    "message": "Opnieuw proberen"
+  },
+  "discussion_notifications": {
+    "message": "Meldingen"
+  },
+  "discussion_notificationEmpty": {
+    "message": "Je bent weer helemaal bij."
+  },
+  "discussion_notificationReply": {
+    "message": "$1 heeft je reactie beantwoord"
+  },
+  "discussion_notificationLike": {
+    "message": "Iemand vindt je reactie leuk"
+  },
+  "discussion_notificationLikes": {
+    "message": "Je reactie heeft $1 likes gekregen"
+  },
+  "discussion_notificationDislike": {
+    "message": "Iemand vindt je reactie niet leuk"
+  },
+  "discussion_notificationReaction": {
+    "message": "Iemand heeft je reactie gewaardeerd"
+  },
+  "discussion_someone": {
+    "message": "Iemand"
+  },
+  "discussion_markRead": {
+    "message": "Markeren als gelezen"
+  },
+  "discussion_markAllRead": {
+    "message": "Alles markeren als gelezen"
+  },
+  "discussion_view": {
+    "message": "Discussie bekijken"
+  },
+  "discussion_unread": {
+    "message": "$1 ongelezen meldingen"
+  },
+  "discussion_signedOutInbox": {
+    "message": "Log in om antwoorden en waarderingen op je reacties te zien."
+  },
+  "discussion_notificationUnavailable": {
+    "message": "Deze discussie is niet meer beschikbaar."
+  },
+  "discussion_discussionTab": {
+    "message": "Discussie"
+  },
+  "discussion_nickname": {
+    "message": "Bijnaam"
+  },
+  "discussion_reportCount": {
+    "message": "Meldingen"
+  },
+  "discussion_reportStatus": {
+    "message": "Status van melding"
+  },
+  "discussion_openReports": {
+    "message": "Openstaande meldingen"
+  },
+  "discussion_resolvedReports": {
+    "message": "Afgewezen meldingen"
+  },
+  "discussion_author": {
+    "message": "Auteur"
+  },
+  "discussion_me": {
+    "message": "Jij"
+  },
+  "discussion_saving": {
+    "message": "Opslaan…"
+  },
+  "discussion_confirm": {
+    "message": "Bevestigen"
+  },
+  "discussion_notificationUpdated": {
+    "message": "Nieuwe activiteit bij je reacties"
+  },
+  "discussion_showThread": {
+    "message": "Gespreksreeks tonen"
+  },
+  "discussion_loadReplies": {
+    "message": "Antwoorden tonen ($1)"
+  },
+  "patreonTierCommenter": {
+    "message": "Commenter"
+  },
+  "changelog_page_title": {
+    "message": "Welkom bij Return YouTube Dislike"
+  },
+  "changelog_hero_eyebrow": {
+    "message": "Je bent klaar"
+  },
+  "changelog_hero_title": {
+    "message": "Dislikes zijn terug."
+  },
+  "changelog_hero_body": {
+    "message": "Open een YouTube-video en je ziet het aantal dislikes direct naast de likes, waar het hoort. Versie 4.1 introduceert ook RYD-reacties, een plek om over video’s te praten buiten de reacties van YouTube zelf."
+  },
+  "changelog_new_badge": {
+    "message": "Nieuw in 4.1"
+  },
+  "changelog_premium_badge": {
+    "message": "Premium"
+  },
+  "changelog_comments_title": {
+    "message": "Ontdek RYD-reacties"
+  },
+  "changelog_comments_body": {
+    "message": "Een discussieplek onder video’s en Shorts, gehost door Return YouTube Dislike en los van de reacties van YouTube. Iedereen kan meelezen en reageren met likes en dislikes. Leden met Commenter of Premium kunnen berichten en antwoorden plaatsen."
+  },
+  "changelog_comments_point_replies": {
+    "message": "Antwoorden in discussiedraden met likes en dislikes"
+  },
+  "changelog_comments_point_nickname": {
+    "message": "Plaats berichten onder een zelfgekozen openbare bijnaam"
+  },
+  "changelog_comments_point_notifications": {
+    "message": "Meldingen als iemand antwoordt of reageert"
+  },
+  "changelog_comments_point_moderation": {
+    "message": "Melden en modereren om gesprekken respectvol te houden"
+  },
+  "changelog_comments_shot_alt": {
+    "message": "RYD-reactiepaneel met een discussiedraad onder een video"
+  },
+  "changelog_notifications_shot_alt": {
+    "message": "RYD-meldingen met antwoorden en likes op je reacties"
+  },
+  "changelog_sample_note": {
+    "message": "De schermafbeeldingen tonen voorbeeldgegevens."
+  },
+  "changelog_analytics_title": {
+    "message": "Premium-analyses"
+  },
+  "changelog_analytics_body": {
+    "message": "Bekijk hoe een video wordt ontvangen door de tijd heen en wereldwijd. Kies 7, 30 of 90 dagen of de hele periode en vergelijk likes, dislikes en hun verhouding."
+  },
+  "changelog_analytics_timeline_title": {
+    "message": "Activiteit door de tijd"
+  },
+  "changelog_analytics_timeline_body": {
+    "message": "Likes en dislikes door de tijd heen, tot op het uur."
+  },
+  "changelog_analytics_countries_title": {
+    "message": "Toplanden"
+  },
+  "changelog_analytics_countries_body": {
+    "message": "Bekijk welke landen een video de meeste likes en dislikes geven."
+  },
+  "changelog_analytics_world_title": {
+    "message": "Wereldkaart"
+  },
+  "changelog_analytics_world_body": {
+    "message": "Vergelijk de betrokkenheid tussen landen."
+  },
+  "changelog_analytics_us_title": {
+    "message": "Amerikaanse staten"
+  },
+  "changelog_analytics_us_body": {
+    "message": "Bekijk de betrokkenheid per staat in detail."
+  },
+  "changelog_join_title": {
+    "message": "Krijg Premium-functies"
+  },
+  "changelog_join_free": {
+    "message": "Het aantal dislikes is voor iedereen gratis. Een lidmaatschap is optioneel en helpt het project te ondersteunen."
+  },
+  "changelog_join_step1": {
+    "message": "Word lid op Patreon. Met Commenter kun je reacties plaatsen; Premium voegt ook analyses toe."
+  },
+  "changelog_join_step3": {
+    "message": "Laad een YouTube-video opnieuw. Je nieuwe functies verschijnen automatisch."
+  },
+  "changelog_also_title": {
+    "message": "Ook in deze versie"
+  },
+  "changelog_also_counts": {
+    "message": "Het aantal likes en dislikes wordt betrouwbaarder weergegeven, in de extensie en het gebruikersscript."
+  },
+  "changelog_also_consent": {
+    "message": "Verbeterde toestemmingsprocedure voor gegevensgebruik in Firefox."
+  },
+  "changelog_also_translations": {
+    "message": "Nieuwe en verbeterde vertalingen."
+  },
+  "reviewPromptTitle": {
+    "message": "Bevalt RYD?"
+  },
+  "reviewPromptBody": {
+    "message": "Google heeft de regels voor beoordelingen in de Chrome Web Store gewijzigd. Ondanks 16.000+ vijfsterrenreviews hebben enkele recente negatieve reviews de beoordeling van RYD verlaagd van 4,6 naar 2,5.\n\nAls RYD je helpt, laat dan een eerlijke review achter."
+  },
+  "reviewPromptAction": {
+    "message": "Review schrijven"
+  }
+}

@@ -1,0 +1,147 @@
+name: Test Builds
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Extensions/combined/**"
+      - "Extensions/common/**"
+      - "Extensions/UserScript/**"
+      - "Extensions/e2e/**"
+      - "Website/_locales/**"
+      - "Website/utils/locale*"
+      - "Website/nuxt.config.js"
+      - "Website/layouts/default.vue"
+      - ".github/workflows/build.yaml"
+      - ".babelrc"
+      - ".gitattributes"
+      - ".nvmrc"
+      - "extension-build-receipt*.js"
+      - "userscript-build-receipt*.js"
+      - "jest.config.js"
+      - "package.json"
+      - "package-lock.json"
+      - "scripts/check-locales*"
+      - "scripts/with-trusted-node*"
+      - "playwright*.js"
+      - "webpack*.js"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "Extensions/combined/**"
+      - "Extensions/common/**"
+      - "Extensions/UserScript/**"
+      - "Extensions/e2e/**"
+      - "Website/_locales/**"
+      - "Website/utils/locale*"
+      - "Website/nuxt.config.js"
+      - "Website/layouts/default.vue"
+      - ".github/workflows/build.yaml"
+      - ".babelrc"
+      - ".gitattributes"
+      - ".nvmrc"
+      - "extension-build-receipt*.js"
+      - "userscript-build-receipt*.js"
+      - "jest.config.js"
+      - "package.json"
+      - "package-lock.json"
+      - "scripts/check-locales*"
+      - "scripts/with-trusted-node*"
+      - "playwright*.js"
+      - "webpack*.js"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    if: github.event_name != 'pull_request' || github.event.pull_request.user.login != 'dependabot[bot]'
+    runs-on: ubuntu-24.04
+    env:
+      NODE_OPTIONS: --use-openssl-ca
+      SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+      SSL_CERT_DIR: /etc/ssl/certs
+
+    steps:
+      - name: Update trusted certificate authorities
+        run: |
+          sudo apt-get update -o APT::Update::Error-Mode=any
+          sudo apt-get install --yes --no-install-recommends --only-upgrade ca-certificates
+          dpkg --compare-versions "$(dpkg-query -W -f='${Version}' ca-certificates)" ge 20260816ubuntu0.24.04.1
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Jest tests
+        run: npm test -- --runInBand
+
+      - name: Check locale completeness
+        run: npm run check:locales
+
+      - name: Build extension
+        run: npm run build
+
+      - name: Check generated extension artifact
+        run: npm run check:extension-artifact
+
+      - name: Build userscript
+        run: npm run build:userscript
+
+      - name: Check generated userscript
+        run: git diff --exit-code -- "Extensions/UserScript/Return Youtube Dislike.user.js"
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run generated-artifact browser tests
+        run: npm run test:e2e:artifacts
+
+      - name: Run extension browser tests
+        run: npm run test:e2e:extension:run
+
+      - name: Run userscript browser tests
+        run: npm run test:e2e:userscript:run
+
+      - name: Upload Chrome artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: ryd-chrome
+          path: ./Extensions/combined/dist/chrome
+          retention-days: 7
+
+      - name: Upload Firefox artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: ryd-firefox
+          path: ./Extensions/combined/dist/firefox
+          retention-days: 7
+
+      - name: Upload Safari artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: ryd-safari
+          path: ./Extensions/combined/dist/safari
+          retention-days: 7
+
+      - name: Upload Playwright failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-browser-failures
+          path: |
+            ./test-results
+            ./playwright-report
+          if-no-files-found: ignore
+          retention-days: 7

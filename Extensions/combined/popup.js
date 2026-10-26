@@ -1,0 +1,862 @@
+import { config as appConfig, getApiUrl, getApiEndpoint } from "./src/config.js";
+import { getGitHubLoginErrorMessage } from "./src/github-login-error";
+import { initDiscussionPopup } from "./src/discussion/popup";
+import { waitForCoreDataConsent } from "./src/consent-prompt";
+import { onCoreDataPermissionChanged } from "./src/core-data-consent";
+import { fetchWithAccountConsent } from "./src/account-data-consent";
+import { isPrivateBrowsingContext } from "./src/private-browsing";
+import { DEFAULT_CUSTOM_COLORS, getThemeColor, normalizeCustomColors } from "../common/color-themes";
+import {
+  hasAuthenticationDataPermission,
+  onAuthenticationDataPermissionRemoved,
+  requestAuthenticationDataPermission,
+  usesFirefoxDataCollectionConsent,
+} from "./src/data-collection-permissions.js";
+
+/*   Config   */
+const config = {
+  advanced: false,
+  disableVoteSubmission: false,
+  disableLogging: true,
+  coloredThumbs: false,
+  coloredBar: false,
+  colorTheme: "classic",
+  customColors: normalizeCustomColors(DEFAULT_CUSTOM_COLORS),
+  numberDisplayFormat: "compactShort",
+  showTooltipPercentage: false,
+  tooltipPercentageMode: "dash_like",
+  numberDisplayReformatLikes: false,
+  hidePremiumTeaser: false,
+  hideClutterButtons: false,
+  showAdvancedMessage:
+    '<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><rect fill="none" height="24" width="24"/><path d="M19.5,12c0-0.23-0.01-0.45-0.03-0.68l1.86-1.41c0.4-0.3,0.51-0.86,0.26-1.3l-1.87-3.23c-0.25-0.44-0.79-0.62-1.25-0.42 l-2.15,0.91c-0.37-0.26-0.76-0.49-1.17-0.68l-0.29-2.31C14.8,2.38,14.37,2,13.87,2h-3.73C9.63,2,9.2,2.38,9.14,2.88L8.85,5.19 c-0.41,0.19-0.8,0.42-1.17,0.68L5.53,4.96c-0.46-0.2-1-0.02-1.25,0.42L2.41,8.62c-0.25,0.44-0.14,0.99,0.26,1.3l1.86,1.41 C4.51,11.55,4.5,11.77,4.5,12s0.01,0.45,0.03,0.68l-1.86,1.41c-0.4,0.3-0.51,0.86-0.26,1.3l1.87,3.23c0.25,0.44,0.79,0.62,1.25,0.42 l2.15-0.91c0.37,0.26,0.76,0.49,1.17,0.68l0.29,2.31C9.2,21.62,9.63,22,10.13,22h3.73c0.5,0,0.93-0.38,0.99-0.88l0.29-2.31 c0.41-0.19,0.8-0.42,1.17-0.68l2.15,0.91c0.46,0.2,1,0.02,1.25-0.42l1.87-3.23c0.25-0.44,0.14-0.99-0.26-1.3l-1.86-1.41 C19.49,12.45,19.5,12.23,19.5,12z M12.04,15.5c-1.93,0-3.5-1.57-3.5-3.5s1.57-3.5,3.5-3.5s3.5,1.57,3.5,3.5S13.97,15.5,12.04,15.5z"/></svg>',
+  hideAdvancedMessage:
+    '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z"/></svg>',
+  links: appConfig.links,
+};
+let colorThemeRevision = 0;
+let customColorsRevision = 0;
+let customColorsReady = false;
+
+/*   Change language   */
+function localizeHtmlPage() {
+  const direction = chrome.i18n.getMessage("@@bidi_dir");
+  if (direction === "rtl" || direction === "ltr") document.documentElement.dir = direction;
+  //Localize by replacing __MSG_***__ meta tags
+  var objects = document.getElementsByTagName("html");
+  for (var j = 0; j < objects.length; j++) {
+    var obj = objects[j];
+
+    var valStrH = obj.innerHTML.toString();
+    var valNewH = valStrH.replace(/__MSG_(\w+)__/g, function (match, v1) {
+      return v1 ? chrome.i18n.getMessage(v1) : "";
+    });
+
+    if (valNewH != valStrH) {
+      obj.innerHTML = valNewH;
+    }
+  }
+}
+
+localizeHtmlPage();
+const privateBrowsing = isPrivateBrowsingContext();
+function isToolbarPopup() {
+  try {
+    return browser.extension?.getViews?.({ type: "popup" }).includes(window) === true;
+  } catch (_) {
+    return false;
+  }
+}
+
+function waitForPopupCoreConsent() {
+  const toolbarPopup = isToolbarPopup();
+  return waitForCoreDataConsent({
+    alwaysExplain: !toolbarPopup,
+    openConsentPage: toolbarPopup
+      ? async () => {
+          await browser.tabs.create({ url: browser.runtime.getURL("consent.html"), active: true });
+          window.close();
+        }
+      : undefined,
+  });
+}
+
+const coreConsentReady = privateBrowsing ? null : waitForPopupCoreConsent();
+if (privateBrowsing) {
+  const home = document.createElement("center");
+  const message = document.createElement("p");
+  message.id = "ryd-private-counts-message";
+  message.textContent =
+    "Counts only in private windows. Voting, sign-in, premium analytics and discussions are unavailable here.";
+  home.append(
+    document.querySelector("body > center > img").cloneNode(true),
+    document.querySelector("body > center > h1").cloneNode(true),
+    message,
+  );
+  document.body.replaceChildren(home);
+} else {
+  coreConsentReady.then(() => initDiscussionPopup());
+  onCoreDataPermissionChanged((granted) => {
+    if (!granted) void waitForPopupCoreConsent();
+  });
+
+  /*   Links   */
+  createLink(config.links.website, "link_website");
+  createLink(config.links.github, "link_github");
+  createLink(config.links.discord, "link_discord");
+  createLink(config.links.faq, "link_faq");
+  createLink(config.links.donate, "link_donate");
+  createLink(config.links.help, "link_help");
+  createLink(config.links.changelog, "link_changelog");
+}
+
+function createLink(url, id) {
+  document.getElementById(id).addEventListener("click", () => {
+    chrome.tabs.create({ url: url });
+  });
+}
+
+if (!privateBrowsing) {
+  document.getElementById("disable_vote_submission").addEventListener("click", (ev) => {
+    chrome.storage.sync.set({ disableVoteSubmission: ev.target.checked });
+  });
+
+  document.getElementById("disable_logging").addEventListener("click", (ev) => {
+    chrome.storage.sync.set({ disableLogging: ev.target.checked });
+  });
+
+  document.getElementById("colored_thumbs").addEventListener("click", (ev) => {
+    chrome.storage.sync.set({ coloredThumbs: ev.target.checked });
+  });
+
+  document.getElementById("colored_bar").addEventListener("click", (ev) => {
+    chrome.storage.sync.set({ coloredBar: ev.target.checked });
+  });
+
+  document.getElementById("color_theme").addEventListener("change", (ev) => {
+    colorThemeRevision++;
+    handleColorThemeChangeEvent(ev.target.value);
+    chrome.storage.sync.set({ colorTheme: ev.target.value });
+  });
+
+  for (const mode of ["light", "dark"]) {
+    for (const vote of ["like", "dislike"]) {
+      const input = document.getElementById(`custom_color_${mode}_${vote}`);
+      input.addEventListener("input", () => {
+        if (!customColorsReady) return;
+        customColorsRevision++;
+        const colors = normalizeCustomColors(config.customColors);
+        colors[mode][vote] = input.value;
+        handleCustomColorsChangeEvent(colors);
+      });
+      input.addEventListener("change", () => {
+        if (!customColorsReady) return;
+        const colors = normalizeCustomColors(config.customColors);
+        colors[mode][vote] = input.value;
+        customColorsRevision++;
+        handleCustomColorsChangeEvent(colors);
+        chrome.storage.sync.set({ customColors: colors });
+      });
+    }
+  }
+
+  document.getElementById("number_format").addEventListener("change", (ev) => {
+    chrome.storage.sync.set({ numberDisplayFormat: ev.target.value });
+  });
+
+  document.getElementById("show_tooltip_percentage").addEventListener("click", (ev) => {
+    chrome.storage.sync.set({ showTooltipPercentage: ev.target.checked });
+  });
+
+  document.getElementById("tooltip_percentage_mode").addEventListener("change", (ev) => {
+    chrome.storage.sync.set({ tooltipPercentageMode: ev.target.value });
+  });
+
+  document.getElementById("number_reformat_likes").addEventListener("click", (ev) => {
+    chrome.storage.sync.set({ numberDisplayReformatLikes: ev.target.checked });
+  });
+
+  document.getElementById("hide_premium_teaser").addEventListener("click", (ev) => {
+    chrome.storage.sync.set({ hidePremiumTeaser: ev.target.checked });
+  });
+
+  document.getElementById("hide_clutter_buttons").addEventListener("click", (ev) => {
+    chrome.storage.sync.set({ hideClutterButtons: ev.target.checked });
+  });
+}
+
+function initPatreonAuth() {
+  const loggedOutView = document.getElementById("patreon-logged-out");
+  const loggedInView = document.getElementById("patreon-logged-in");
+  const loginBtn = document.getElementById("patreon-login-btn");
+  const githubLoginBtn = document.getElementById("github-login-btn");
+  const logoutBtn = document.getElementById("patreon-logout-btn");
+  const userAvatar = document.getElementById("patreon-user-avatar");
+  const userName = document.getElementById("patreon-user-name");
+  const userTier = document.getElementById("patreon-tier");
+  let authenticationGeneration = 0;
+  let openingPermissionPage = false;
+  const initialGeneration = authenticationGeneration;
+
+  chrome.storage.sync.get(["patreonUser", "patreonSessionToken"], async (data) => {
+    if (initialGeneration !== authenticationGeneration) return;
+    const cachedUser = data.patreonUser;
+    const sessionToken = data.patreonSessionToken;
+
+    if (sessionToken && cachedUser) {
+      const granted = await hasAuthenticationDataPermission();
+      if (initialGeneration !== authenticationGeneration) return;
+      if (!granted) {
+        chrome.storage.sync.remove(["patreonAuthenticated", "patreonUser", "patreonSessionToken"]);
+        showLoggedOutView();
+        return;
+      }
+
+      // Show cached state immediately to avoid flicker on popup reopen.
+      showLoggedInView(cachedUser);
+
+      verifySession(sessionToken, initialGeneration).then(async (result) => {
+        if (initialGeneration !== authenticationGeneration) return;
+        const stillGranted = await hasAuthenticationDataPermission();
+        if (initialGeneration !== authenticationGeneration || !stillGranted) return;
+        if (result.status === "valid") {
+          if (result.membershipTier && result.membershipTier !== cachedUser.membershipTier) {
+            const updatedUser = { ...cachedUser, membershipTier: result.membershipTier, hasActiveMembership: true };
+            showLoggedInView(updatedUser);
+            chrome.storage.sync.set({ patreonUser: updatedUser });
+          } else if (cachedUser.hasActiveMembership !== true) {
+            const updatedUser = { ...cachedUser, hasActiveMembership: true };
+            showLoggedInView(updatedUser);
+            chrome.storage.sync.set({ patreonUser: updatedUser });
+          }
+        } else if (result.status === "inactive") {
+          const updatedUser = {
+            ...cachedUser,
+            hasActiveMembership: false,
+            membershipTier: result.membershipTier || cachedUser.membershipTier || "none",
+          };
+          showLoggedInView(updatedUser);
+          chrome.storage.sync.set({ patreonUser: updatedUser });
+        } else if (result.status === "error") {
+          console.warn("Patreon session verification skipped:", result.reason || "network_error");
+        } else {
+          showLoggedOutView();
+          chrome.storage.sync.remove(["patreonUser", "patreonSessionToken"]);
+        }
+      });
+    } else {
+      showLoggedOutView();
+    }
+  });
+
+  function showLoggedOutView() {
+    loggedOutView.style.display = "block";
+    loggedInView.style.display = "none";
+    userAvatar.removeAttribute("src");
+    userAvatar.style.display = "none";
+    userName.textContent = "";
+    userTier.textContent = "";
+    updateHidePremiumSettingLabel();
+    if (window.location.hash === "#patreon-login-btn") loginBtn.focus();
+    if (window.location.hash === "#github-login-btn") githubLoginBtn?.focus();
+  }
+
+  function showLoggedInView(user) {
+    loggedOutView.style.display = "none";
+    loggedInView.style.display = "block";
+    updateHidePremiumSettingLabel(user);
+
+    userName.textContent = user.fullName || user.email || chrome.i18n.getMessage("patreonUserFallback");
+
+    if (user.imageUrl) {
+      userAvatar.src = user.imageUrl;
+      userAvatar.style.display = "block";
+    } else {
+      userAvatar.src = "";
+      userAvatar.style.display = "none";
+    }
+
+    const tierLabels = {
+      premium: chrome.i18n.getMessage("patreonTierPremium"),
+      commenter: chrome.i18n.getMessage("patreonTierCommenter"),
+      supporter: chrome.i18n.getMessage("patreonTierSupporter"),
+      basic: chrome.i18n.getMessage("patreonTierBasic"),
+      none: chrome.i18n.getMessage("patreonTierNone"),
+    };
+
+    userTier.textContent = tierLabels[user.membershipTier] || chrome.i18n.getMessage("patreonTierChecking");
+
+    if (user.hasActiveMembership) {
+      userTier.style.color = "#f96854";
+    } else {
+      userTier.style.color = "var(--lightGrey)";
+    }
+  }
+
+  function updateHidePremiumSettingLabel(user) {
+    const hasPremiumAnalytics = user?.hasActiveMembership === true && user.membershipTier === "premium";
+    const messageKey = hasPremiumAnalytics ? "hidePremiumAnalytics" : "hidePremiumTeaser";
+    const label = document.getElementById("hide_premium_teaser").closest("label");
+    label.querySelector(".switchLabel").textContent = chrome.i18n.getMessage(messageKey);
+    label.dataset.hover = chrome.i18n.getMessage(`${messageKey}Hover`);
+  }
+
+  async function verifySession(token, generation) {
+    try {
+      if (!(await hasAuthenticationDataPermission()) || generation !== authenticationGeneration) {
+        return { status: "consent_required" };
+      }
+
+      const response = await fetchWithAccountConsent(getApiEndpoint("/api/auth/verify"), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ sessionToken: token }),
+      });
+
+      const data = await response.json().catch(() => null);
+      if (!data) {
+        return { status: "error", reason: "invalid_response" };
+      }
+
+      const failureReason = typeof data.failureReason === "string" ? data.failureReason : null;
+      const membershipTier = typeof data.membershipTier === "string" ? data.membershipTier : null;
+
+      if (data.valid === true) {
+        return { status: "valid", membershipTier };
+      }
+
+      if (failureReason === "membershipinactive") {
+        return { status: "inactive", membershipTier };
+      }
+
+      if (failureReason === "expired" || failureReason === "legacyformat") {
+        return { status: "expired", membershipTier };
+      }
+
+      if (failureReason === "invalid") {
+        return { status: "invalid", membershipTier, failureReason };
+      }
+
+      if (!failureReason) {
+        return { status: "error", reason: "unknown_failure" };
+      }
+
+      return { status: "error", reason: failureReason };
+    } catch (error) {
+      console.error("Session verification failed:", error);
+      return { status: "error", reason: "network_error" };
+    }
+  }
+
+  // Wrapper for cross-browser identity API
+  function getIdentityApi() {
+    if (typeof browser !== "undefined" && browser.identity) return browser.identity; // prefer Firefox promise API
+    if (typeof chrome !== "undefined" && chrome.identity) return chrome.identity;
+    return null;
+  }
+
+  function launchWebAuthFlow(url) {
+    try {
+      if (
+        typeof browser !== "undefined" &&
+        browser.identity &&
+        typeof browser.identity.launchWebAuthFlow === "function"
+      ) {
+        // Promise-based API (Firefox)
+        return browser.identity.launchWebAuthFlow({ url, interactive: true });
+      }
+    } catch (_) {}
+
+    const chromeId = (typeof chrome !== "undefined" && chrome.identity) || null;
+    if (!chromeId || typeof chromeId.launchWebAuthFlow !== "function") {
+      return Promise.reject(new Error("identity API not available"));
+    }
+    // Callback-based API (Chrome)
+    return new Promise((resolve, reject) => {
+      chromeId.launchWebAuthFlow({ url, interactive: true }, (responseUrl) => {
+        const err = chrome.runtime && chrome.runtime.lastError;
+        if (err) reject(err);
+        else resolve(responseUrl);
+      });
+    });
+  }
+
+  function extractOAuthParams(responseUrl) {
+    try {
+      const u = new URL(responseUrl);
+      let code = u.searchParams.get("code");
+      let state = u.searchParams.get("state");
+      if (!code && u.hash) {
+        const hashParams = new URLSearchParams(u.hash.startsWith("#") ? u.hash.substring(1) : u.hash);
+        code = hashParams.get("code");
+        state = state || hashParams.get("state");
+      }
+      return { code, state };
+    } catch (_) {
+      return { code: null, state: null };
+    }
+  }
+
+  // Request identity permission immediately within the user click (no awaits prior)
+  function ensureIdentityPermission(onResult) {
+    try {
+      const mf = chrome && chrome.runtime && chrome.runtime.getManifest ? chrome.runtime.getManifest() : null;
+      // If manifest cannot request identity dynamically (e.g., Firefox), proceed if API is available
+      if (mf && (!Array.isArray(mf.optional_permissions) || !mf.optional_permissions.includes("identity"))) {
+        const id = getIdentityApi();
+        onResult(Boolean(id && typeof id.getRedirectURL === "function"));
+        return;
+      }
+
+      const perms =
+        (typeof chrome !== "undefined" && chrome.permissions) ||
+        (typeof browser !== "undefined" && browser.permissions);
+      if (!perms || !perms.contains) return onResult(false);
+      const afterContains = (has) => {
+        if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.lastError) has = false;
+        if (has) return onResult(true);
+        if (!perms.request) return onResult(false);
+        const reqResult = perms.request({ permissions: ["identity"] }, (granted) => {
+          if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.lastError) return onResult(false);
+          onResult(Boolean(granted));
+        });
+        // Firefox may return a promise
+        if (reqResult && typeof reqResult.then === "function") {
+          reqResult.then((granted) => onResult(Boolean(granted))).catch(() => onResult(false));
+        }
+      };
+      const result = perms.contains({ permissions: ["identity"] }, afterContains);
+      if (result && typeof result.then === "function") {
+        result.then(afterContains).catch(() => onResult(false));
+      }
+    } catch (_) {
+      onResult(false);
+    }
+  }
+
+  function requestLoginConsent(buttonId, generation, continueLogin) {
+    if (!usesFirefoxDataCollectionConsent()) {
+      continueLogin(true);
+      return;
+    }
+    if (!isToolbarPopup()) {
+      requestAuthenticationDataPermission().then(continueLogin);
+      return;
+    }
+
+    // Keep the native permission prompt and its continuation outside the toolbar popup.
+    openingPermissionPage = true;
+    void hasAuthenticationDataPermission()
+      .then(async (granted) => {
+        if (generation !== authenticationGeneration) return;
+        if (granted) {
+          continueLogin(true);
+          return;
+        }
+        await browser.tabs.create({ url: browser.runtime.getURL("popup.html") + "#" + buttonId, active: true });
+        if (generation === authenticationGeneration) window.close();
+      })
+      .catch(() => {
+        if (generation !== authenticationGeneration) return;
+        alert(
+          chrome.i18n.getMessage(
+            buttonId === "github-login-btn" ? "githubLoginStartFailed" : "patreonLoginStartFailed",
+          ),
+        );
+      })
+      .finally(() => {
+        openingPermissionPage = false;
+      });
+  }
+
+  loginBtn.addEventListener("click", () => {
+    if (openingPermissionPage) return;
+    const generation = ++authenticationGeneration;
+    const continueLogin = (consentGranted) => {
+      if (generation !== authenticationGeneration) return;
+      if (!consentGranted) {
+        alert(chrome.i18n.getMessage("patreonPermissionRequired"));
+        return;
+      }
+
+      ensureIdentityPermission((granted) => {
+        if (generation !== authenticationGeneration) return;
+        const identityNow = getIdentityApi();
+        if (!granted || !identityNow || typeof identityNow.getRedirectURL !== "function") {
+          alert(chrome.i18n.getMessage("patreonPermissionRequired"));
+          return;
+        }
+        // Delegate OAuth to background so it persists if the popup closes
+        chrome.runtime.sendMessage({ message: "patreon_oauth_login" }, async (resp) => {
+          if (generation !== authenticationGeneration) return;
+          if (chrome.runtime && chrome.runtime.lastError) {
+            console.error("Login failed:", chrome.runtime.lastError.message);
+            alert(chrome.i18n.getMessage("patreonLoginStartFailed"));
+            return;
+          }
+          if (resp && resp.success) {
+            const stillGranted = await hasAuthenticationDataPermission();
+            if (generation !== authenticationGeneration || !stillGranted) return;
+            const user = resp.user;
+            showLoggedInView(user);
+          } else {
+            console.error("Login failed:", resp && resp.error);
+            alert(chrome.i18n.getMessage("patreonLoginCompleteFailed"));
+          }
+        });
+      });
+    };
+
+    requestLoginConsent("patreon-login-btn", generation, continueLogin);
+  });
+
+  if (githubLoginBtn) {
+    githubLoginBtn.addEventListener("click", () => {
+      if (openingPermissionPage) return;
+      const generation = ++authenticationGeneration;
+      const continueLogin = (consentGranted) => {
+        if (generation !== authenticationGeneration) return;
+        if (!consentGranted) {
+          alert(chrome.i18n.getMessage("patreonPermissionRequired"));
+          return;
+        }
+
+        ensureIdentityPermission((granted) => {
+          if (generation !== authenticationGeneration) return;
+          const identityNow = getIdentityApi();
+          if (!granted || !identityNow || typeof identityNow.getRedirectURL !== "function") {
+            alert(chrome.i18n.getMessage("patreonPermissionRequired"));
+            return;
+          }
+
+          chrome.runtime.sendMessage({ message: "github_oauth_login" }, async (resp) => {
+            if (generation !== authenticationGeneration) return;
+            if (chrome.runtime && chrome.runtime.lastError) {
+              console.error("GitHub login failed:", chrome.runtime.lastError.message);
+              alert(chrome.i18n.getMessage("githubLoginStartFailed"));
+              return;
+            }
+            if (resp && resp.success) {
+              const stillGranted = await hasAuthenticationDataPermission();
+              if (generation !== authenticationGeneration || !stillGranted) return;
+              const user = resp.user;
+              showLoggedInView(user);
+            } else {
+              console.error("GitHub login failed:", resp && resp.error);
+              alert(getGitHubLoginErrorMessage(resp?.error, (key) => chrome.i18n.getMessage(key)));
+            }
+          });
+        });
+      };
+
+      requestLoginConsent("github-login-btn", generation, continueLogin);
+    });
+  }
+
+  onAuthenticationDataPermissionRemoved(() => {
+    authenticationGeneration++;
+    chrome.storage.sync.remove(["patreonAuthenticated", "patreonUser", "patreonSessionToken"]);
+    showLoggedOutView();
+  });
+
+  onCoreDataPermissionChanged((granted) => {
+    if (granted) return;
+    authenticationGeneration++;
+    chrome.storage.sync.remove(["patreonAuthenticated", "patreonUser", "patreonSessionToken"]);
+    showLoggedOutView();
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    authenticationGeneration++;
+    showLoggedOutView();
+    chrome.storage.sync.remove(["patreonAuthenticated", "patreonUser", "patreonSessionToken"]);
+    chrome.runtime.sendMessage({ message: "patreon_logout" });
+  });
+}
+
+if (!privateBrowsing) {
+  coreConsentReady.then(() => initPatreonAuth());
+
+  /*   Advanced Toggle   */
+  const advancedToggle = document.getElementById("advancedToggle");
+  advancedToggle.addEventListener("click", () => {
+    const adv = document.getElementById("advancedSettings");
+    if (config.advanced) {
+      adv.style.transform = "scale(1.1)";
+      adv.style.pointerEvents = "none";
+      adv.style.opacity = "0";
+      advancedToggle.innerHTML = config.showAdvancedMessage;
+    } else {
+      adv.style.transform = "scale(1)";
+      adv.style.pointerEvents = "auto";
+      adv.style.opacity = "1";
+      advancedToggle.innerHTML = config.hideAdvancedMessage;
+    }
+    config.advanced = !config.advanced;
+  });
+
+  chrome.storage.onChanged.addListener(storageChangeHandler);
+  initConfig();
+}
+
+function initConfig() {
+  initializeDisableVoteSubmission();
+  initializeDisableLogging();
+  initializeVersionNumber();
+  initializeColoredThumbs();
+  initializeColoredBar();
+  initializeColorTheme();
+  initializeNumberDisplayFormat();
+  initializeTooltipPercentage();
+  initializeTooltipPercentageMode();
+  initializeNumberDisplayReformatLikes();
+  initializeHidePremiumTeaser();
+  initializeHideClutterButtons();
+}
+
+function initializeVersionNumber() {
+  const version = chrome.runtime.getManifest().version;
+  document.getElementById("ext-version").innerHTML = "v" + version;
+}
+
+function initializeDisableVoteSubmission() {
+  chrome.storage.sync.get(["disableVoteSubmission"], (res) => {
+    handleDisableVoteSubmissionChangeEvent(res.disableVoteSubmission);
+  });
+}
+
+function initializeDisableLogging() {
+  chrome.storage.sync.get(["disableLogging"], (res) => {
+    handleDisableLoggingChangeEvent(res.disableLogging);
+  });
+}
+
+function initializeColoredThumbs() {
+  chrome.storage.sync.get(["coloredThumbs"], (res) => {
+    handleColoredThumbsChangeEvent(res.coloredThumbs);
+  });
+}
+
+function initializeColoredBar() {
+  chrome.storage.sync.get(["coloredBar"], (res) => {
+    handleColoredBarChangeEvent(res.coloredBar);
+  });
+}
+
+function initializeColorTheme() {
+  const initialThemeRevision = colorThemeRevision;
+  const initialColorsRevision = customColorsRevision;
+  updateColorThemePreviewContent();
+  chrome.storage.sync.get(["colorTheme", "customColors"], (res) => {
+    if (initialColorsRevision === customColorsRevision) handleCustomColorsChangeEvent(res.customColors);
+    customColorsReady = true;
+    if (initialThemeRevision === colorThemeRevision) handleColorThemeChangeEvent(res.colorTheme);
+    updateColorThemePreviewContent();
+  });
+}
+
+function initializeTooltipPercentage() {
+  chrome.storage.sync.get(["showTooltipPercentage"], (res) => {
+    handleShowTooltipPercentageChangeEvent(res.showTooltipPercentage);
+  });
+}
+
+function initializeTooltipPercentageMode() {
+  chrome.storage.sync.get(["tooltipPercentageMode"], (res) => {
+    handleTooltipPercentageModeChangeEvent(res.tooltipPercentageMode);
+  });
+}
+
+function initializeNumberDisplayFormat() {
+  chrome.storage.sync.get(["numberDisplayFormat"], (res) => {
+    handleNumberDisplayFormatChangeEvent(res.numberDisplayFormat);
+  });
+  updateNumberDisplayFormatContent();
+}
+
+function updateNumberDisplayFormatContent() {
+  let testValue = 123456;
+  document.getElementById("number_format_compactShort").innerHTML =
+    getNumberFormatter("compactShort").format(testValue);
+  document.getElementById("number_format_compactLong").innerHTML = getNumberFormatter("compactLong").format(testValue);
+  document.getElementById("number_format_standard").innerHTML = getNumberFormatter("standard").format(testValue);
+}
+
+function initializeNumberDisplayReformatLikes() {
+  chrome.storage.sync.get(["numberDisplayReformatLikes"], (res) => {
+    handleNumberDisplayReformatLikesChangeEvent(res.numberDisplayReformatLikes);
+  });
+}
+
+function initializeHidePremiumTeaser() {
+  chrome.storage.sync.get(["hidePremiumTeaser"], (res) => {
+    handleHidePremiumTeaserChangeEvent(res.hidePremiumTeaser);
+  });
+}
+
+function initializeHideClutterButtons() {
+  chrome.storage.sync.get(["hideClutterButtons"], (res) => {
+    if (res.hideClutterButtons === undefined) {
+      chrome.storage.sync.set({ hideClutterButtons: false });
+    }
+    handleHideClutterButtonsChangeEvent(res.hideClutterButtons);
+  });
+}
+
+function storageChangeHandler(changes, area) {
+  if (changes.disableVoteSubmission !== undefined) {
+    handleDisableVoteSubmissionChangeEvent(changes.disableVoteSubmission.newValue);
+  }
+  if (changes.disableLogging !== undefined) {
+    handleDisableLoggingChangeEvent(changes.disableLogging.newValue);
+  }
+  if (changes.coloredThumbs !== undefined) {
+    handleColoredThumbsChangeEvent(changes.coloredThumbs.newValue);
+  }
+  if (changes.coloredBar !== undefined) {
+    handleColoredBarChangeEvent(changes.coloredBar.newValue);
+  }
+  if (area === "sync" && changes.customColors !== undefined) {
+    customColorsRevision++;
+    handleCustomColorsChangeEvent(changes.customColors.newValue);
+  }
+  if (area === "sync" && changes.colorTheme !== undefined) {
+    colorThemeRevision++;
+    handleColorThemeChangeEvent(changes.colorTheme.newValue);
+  }
+  if (changes.numberDisplayFormat !== undefined) {
+    handleNumberDisplayFormatChangeEvent(changes.numberDisplayFormat.newValue);
+  }
+  if (changes.showTooltipPercentage !== undefined) {
+    handleShowTooltipPercentageChangeEvent(changes.showTooltipPercentage.newValue);
+  }
+  if (changes.numberDisplayReformatLikes !== undefined) {
+    handleNumberDisplayReformatLikesChangeEvent(changes.numberDisplayReformatLikes.newValue);
+  }
+  if (changes.hidePremiumTeaser !== undefined) {
+    handleHidePremiumTeaserChangeEvent(changes.hidePremiumTeaser.newValue);
+  }
+  if (changes.hideClutterButtons !== undefined) {
+    handleHideClutterButtonsChangeEvent(changes.hideClutterButtons.newValue);
+  }
+}
+
+function handleDisableVoteSubmissionChangeEvent(value) {
+  config.disableVoteSubmission = value;
+  document.getElementById("disable_vote_submission").checked = value;
+}
+
+function handleDisableLoggingChangeEvent(value) {
+  config.disableLogging = value;
+  document.getElementById("disable_logging").checked = value;
+}
+
+function handleColoredThumbsChangeEvent(value) {
+  config.coloredThumbs = value;
+  document.getElementById("colored_thumbs").checked = value;
+}
+
+function handleColoredBarChangeEvent(value) {
+  config.coloredBar = value;
+  document.getElementById("colored_bar").checked = value;
+}
+
+function handleColorThemeChangeEvent(value) {
+  const select = document.getElementById("color_theme");
+  config.colorTheme = Array.from(select.options).some((option) => option.value === value) ? value : "classic";
+  select.value = config.colorTheme;
+  updateColorThemePreviewContent();
+}
+
+function handleCustomColorsChangeEvent(value) {
+  config.customColors = normalizeCustomColors(value);
+  updateColorThemePreviewContent();
+}
+
+function updateColorThemePreviewContent() {
+  for (const mode of ["light", "dark"]) {
+    document.getElementById(`custom_colors_${mode}`).hidden = config.colorTheme !== "custom";
+    for (const vote of ["like", "dislike"]) {
+      const input = document.getElementById(`custom_color_${mode}_${vote}`);
+      input.value = config.customColors[mode][vote];
+      input.disabled = !customColorsReady;
+      document.getElementById(`color_theme_example_${mode}_${vote}`).style.backgroundColor = getThemeColor(
+        config.colorTheme,
+        vote === "like",
+        mode === "dark",
+        config.customColors,
+      );
+    }
+  }
+}
+
+function handleNumberDisplayFormatChangeEvent(value = "compactShort") {
+  config.numberDisplayFormat = value;
+  document.getElementById("number_format").querySelector('option[value="' + value + '"]').selected = true;
+}
+
+function handleShowTooltipPercentageChangeEvent(value) {
+  config.showTooltipPercentage = value;
+  document.getElementById("show_tooltip_percentage").checked = value;
+}
+
+function handleTooltipPercentageModeChangeEvent(value) {
+  if (!value) {
+    value = "dash_like";
+  }
+  config.tooltipPercentageMode = value;
+
+  document.getElementById("tooltip_percentage_mode").querySelector('option[value="' + value + '"]').selected = true;
+}
+
+function handleNumberDisplayReformatLikesChangeEvent(value) {
+  config.numberDisplayReformatLikes = value;
+  document.getElementById("number_reformat_likes").checked = value;
+}
+
+function handleHidePremiumTeaserChangeEvent(value) {
+  const normalized = value === true;
+  config.hidePremiumTeaser = normalized;
+  document.getElementById("hide_premium_teaser").checked = normalized;
+}
+
+function handleHideClutterButtonsChangeEvent(value) {
+  const normalized = value === true;
+  config.hideClutterButtons = normalized;
+  document.getElementById("hide_clutter_buttons").checked = normalized;
+}
+
+function getNumberFormatter(optionSelect) {
+  let formatterNotation;
+  let formatterCompactDisplay;
+  let userLocales;
+  try {
+    userLocales = new URL(
+      Array.from(document.querySelectorAll("head > link[rel='search']"))
+        ?.find((n) => n?.getAttribute("href")?.includes("?locale="))
+        ?.getAttribute("href"),
+    )?.searchParams?.get("locale");
+  } catch {}
+
+  switch (optionSelect) {
+    case "compactLong":
+      formatterNotation = "compact";
+      formatterCompactDisplay = "long";
+      break;
+    case "standard":
+      formatterNotation = "standard";
+      formatterCompactDisplay = "short";
+      break;
+    case "compactShort":
+    default:
+      formatterNotation = "compact";
+      formatterCompactDisplay = "short";
+  }
+  const formatter = Intl.NumberFormat(document.documentElement.lang || userLocales || navigator.language, {
+    notation: formatterNotation,
+    compactDisplay: formatterCompactDisplay,
+  });
+  return formatter;
+}
